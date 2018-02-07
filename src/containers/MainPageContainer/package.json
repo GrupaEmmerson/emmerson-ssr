@@ -1,0 +1,6 @@
+{
+  "name": "MainPageContainer",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./MainPageContainer.js"
+}

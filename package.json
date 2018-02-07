@@ -1,0 +1,43 @@
+{
+  "name": "server-side-rendering-with-create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "decode-html": "^2.0.0",
+    "font-awesome": "^4.7.0",
+    "history": "4.6.3",
+    "htmlspecialchars": "^1.0.5",
+    "node-fetch": "^2.0.0",
+    "node-sass-chokidar": "0.0.3",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-google-maps": "^9.2.2",
+    "react-helmet": "^5.2.0",
+    "react-image-lightbox": "^3.5.0",
+    "react-number-format": "^3.1.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.17",
+    "react-slick": "^0.16.0",
+    "react-social": "^1.10.0",
+    "react-transition-group": "^1.2.0",
+    "reactstrap": "^4.8.0",
+    "redux": "^3.6.0",
+    "redux-form": "^7.0.4",
+    "redux-thunk": "^2.1.0",
+    "simple-line-icons": "^2.4.1"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/scss/index.scss -o src/scss/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/scss --include-path ./node_modules src/scss/ -o src/scss --watch --recursive",
+    "start": "react-scripts start HOST=0.0.0.0 port=3000",
+    "start:ssr": "node ./server/",
+    "build": "npm run build-css && react-scripts build && npm run ssr",
+    "ssr": "cross-env NODE_ENV=production webpack --config ./webpack.ssr.config.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1"
+  }
+}
