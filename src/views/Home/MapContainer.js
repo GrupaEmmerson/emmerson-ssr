@@ -11,6 +11,8 @@ import SearchBox from "react-google-maps/lib/components/places/SearchBox";
 import * as actions from '../../actions';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import { Input } from "reactstrap";
+
 const { compose, withProps, lifecycle} = require("recompose");
 const _ = require("lodash");
 
@@ -123,25 +125,7 @@ export const MapWithASearchBox = compose(
                 controlPosition={google.maps.ControlPosition.TOP_CENTER}
                 onPlacesChanged={props.onPlacesChanged}
             >
-                <input
-                    type="text"
-                    placeholder="Wyszukaj..."
-                    style={{
-                        boxSizing: `border-box`,
-                        border: `1px solid transparent`,
-                        width: `360px`,
-                        height: `32px`,
-                        marginTop: `10px`,
-                        padding: `0 12px`,
-                        borderRadius: `3px`,
-                        boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                        fontSize: `14px`,
-                        outline: `none`,
-                        textOverflow: `ellipses`,
-                        color: '#fff'
-                    }}
-                    className='bg-dark search-box'
-                />
+                <Input type="text" className='custom_inputs search-box' placeholder='Lokalizacja' style={{width: 400+'px', marginTop: 10+'px'}}/>
             </SearchBox>
             {props.markers.map((marker, index) =>
                 <Marker key={index} position={marker.position} />

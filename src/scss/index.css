@@ -8767,19 +8767,19 @@ body {
     margin-top: 300px !important; } }
 
 [placeholder]::-webkit-input-placeholder {
-  color: #fff;
+  color: #71777f;
   font-size: 14px; }
 
 [placeholder]:-moz-placeholder {
-  color: #fff;
+  color: #71777f;
   font-size: 14px; }
 
 [placeholder]::-moz-placeholder {
-  color: #fff;
+  color: #71777f;
   font-size: 14px; }
 
 [placeholder]:-ms-input-placeholder {
-  color: #fff;
+  color: #71777f;
   font-size: 14px; }
 
 .smalltitle2 {
@@ -8802,7 +8802,7 @@ body {
   padding-bottom: 10px;
   background: transparent;
   background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, transparent), color-stop(53%, rgba(0, 0, 0, 0.39)), color-stop(100%, rgba(0, 0, 0, 0.73)));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(53%, rgba(0, 0, 0, 0.39)), color-stop(100%, rgba(0, 0, 0, 0.73)));
   background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
   background: -o-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
   background: -ms-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
@@ -8883,9 +8883,9 @@ a:hover {
   border-top: 2px solid #e3001b; }
 
 .white-dots {
-  z-index: 999999;
+  z-index: 999;
   margin-bottom: 2px;
-  padding-top: 5px;
+  margin-top: 50px;
   background-color: #fff; }
 
 .white-dots li button:before {
@@ -8931,3 +8931,66 @@ a:hover {
     width: 300px;
     right: 0;
     top: 80px; } }
+
+.custom_inputs {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: BebasNeue Regular, sans-serif, FontAwesome;
+  color: #000; }
+
+#pac-input {
+  width: 100%;
+  font-family: BebasNeue Regular, sans-serif, FontAwesome;
+  font-size: 18px;
+  font-weight: 300;
+  text-overflow: ellipsis; }
+
+#pac-input:focus {
+  margin-left: -1px;
+  padding-left: 14px;
+  /* Regular padding-left + 1. */ }
+
+.pac-container {
+  font-family: BebasNeue Regular, sans-serif, FontAwesome;
+  color: #000;
+  background-color: #fff;
+  border-color: #fff; }
+
+#type-selector {
+  color: #000 !important;
+  background-color: #29363d;
+  font-size: 18px;
+  font-weight: 300; }
+
+#type-selector label {
+  font-family: BebasNeue Regular, sans-serif, FontAwesome;
+  font-size: 18px;
+  font-weight: 300; }
+
+@media only screen and (max-width: 991px) {
+  .hide-on-mobile {
+    display: none; }
+  .show-on-mobile {
+    display: inline;
+    width: 50%; }
+  .imageDiv {
+    margin-top: 20px !important; }
+  .search-main-box {
+    top: 180px !important; } }
+
+@media (min-width: 991px) {
+  .show-on-mobile {
+    display: none; } }
+
+.cursor-move {
+  cursor: url(https://ssl.gstatic.com/ui/v1/icons/mail/images/2/closedhand.cur), default !important; }
+
+.cursor-ew-resize {
+  cursor: ew-resize; }
+
+@font-face {
+  font-family: BebasNeue Regular;
+  src: url("../../src/scss/fonts/BebasNeue Regular.otf");
+  src: url("../../src/scss/fonts/BebasNeue Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400; }
