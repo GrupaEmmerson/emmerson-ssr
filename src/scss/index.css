@@ -8915,14 +8915,15 @@ a:hover {
     margin: auto;
     padding-top: 100px; } }
 
-.contact {
-  width: 100%;
+.contact-background {
   background-color: #e3001b;
-  margin: 0;
-  padding: 20px 0 20px 0;
-  height: auto;
-  position: relative;
   color: #fff; }
+
+@media (max-width: 1750px) {
+  .contact {
+    display: none; }
+  .contact-small-screen {
+    display: block; } }
 
 @media (min-width: 1750px) {
   .contact {
@@ -8930,7 +8931,9 @@ a:hover {
     position: fixed;
     width: 300px;
     right: 0;
-    top: 80px; } }
+    top: 80px; }
+  .contact-small-screen {
+    display: none; } }
 
 .custom_inputs {
   font-size: 16px;
@@ -8987,6 +8990,16 @@ a:hover {
 
 .cursor-ew-resize {
   cursor: ew-resize; }
+
+.app-header {
+  font-family: BebasNeue Regular, sans-serif, FontAwesome !important;
+  font-size: 20px !important;
+  font-weight: 300; }
+
+.app-header.navbar .nav-item .nav-link, .app-header.navbar .nav-item .dropdown-toggle, .app-header.navbar .nav-item .dropdown-toggle {
+  font-family: BebasNeue Regular, sans-serif, FontAwesome !important;
+  font-size: 20px !important;
+  font-weight: 300; }
 
 @font-face {
   font-family: BebasNeue Regular;

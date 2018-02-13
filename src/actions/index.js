@@ -1,4 +1,7 @@
-import {GET_LOCATION, GET_VIEWPORT, GET_OFFERS, IS_LOADED, GET_PROPERTIES, GET_SEARCH, GET_ROWS_COUNT} from './types';
+import {
+    GET_LOCATION, GET_VIEWPORT, GET_OFFERS, IS_LOADED, GET_PROPERTIES, GET_SEARCH, GET_ROWS_COUNT,
+    GET_PLACES_CHANGED, GET_SEARCH_DATA
+} from './types';
 
 export function setLocation(location) {
     return function (dispatch) {
@@ -24,6 +27,15 @@ export function setIsLoaded(isLoaded) {
     }
 }
 
+export function setPlacesChanged(places) {
+
+    return function (dispatch) {
+
+        dispatch({type: GET_PLACES_CHANGED, payload: places});
+
+    }
+}
+
 export function setSearchProperties(data) {
     return function (dispatch) {
         dispatch({type: GET_PROPERTIES, payload: data});
@@ -37,6 +49,14 @@ export function setSearch(data) {
 
     return function (dispatch) {
         dispatch({type: GET_SEARCH, payload: '&'+url});
+    }
+}
+
+export function setSearchData(data) {
+
+
+    return function (dispatch) {
+        dispatch({type: GET_SEARCH_DATA, payload: data});
     }
 }
 

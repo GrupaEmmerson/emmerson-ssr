@@ -130,7 +130,7 @@ class OfferView extends Component {
                             />
                         </div>
 
-                        <div className='contact'>
+                        <div className='contact contact-background' style={{padding: '20px 20px', margin: 0, height: 'auto'}}>
                             <Contact adviser={this.state.offer.adviser}/>
                         </div>
 
@@ -143,7 +143,10 @@ class OfferView extends Component {
                                 <SimpleSlider images={this.state.offer.photo}/>
                             </div>
 
-                            <div className='col-12 col-sm-12 col-md-5 col-lg-3' style={{marginBottom: 40+'px'}}>
+                            <div className='col-12 col-sm-12 col-md-5 col-lg-3 nopadding' style={{marginBottom: 40+'px'}}>
+                                <div className='col-12 contact-background contact-small-screen' style={{padding: '20px 10px', margin: 0, height: 'auto', marginBottom: 40+'px', marginTop: 40+'px'}}>
+                                    <Contact adviser={this.state.offer.adviser}/>
+                                </div>
                                 <InfoOfferView offer={this.state.offer}/>
                             </div>
 

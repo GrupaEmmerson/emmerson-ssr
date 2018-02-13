@@ -49,7 +49,7 @@ class OffersView extends Component {
                     row.map((e, index) => {
 
                         return(
-                            <div className='col-md-6 col-lg-12 col-sm-12 nopadding' key={index}>
+                            <div className='col-md-6 col-lg-12 col-sm-12 nopadding' key={e.id+'-'+index}>
                                 <Link to={"/offer/"+e.id} target='_blank'>
                                     <div className="smalltitle2" style={ {
                                         backgroundImage: "url(" +  e.big_photo_url  + ")",

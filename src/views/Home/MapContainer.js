@@ -21,6 +21,7 @@ const mapStateToProps = state => ({
     location: state.location.location,
     offers: state.offers.offers,
     isLoaded: state.isLoaded.isLoaded,
+    placesChanged: state.placesChanged.placesChanged
 });
 
 export const MapWithASearchBox = compose(
@@ -29,6 +30,7 @@ export const MapWithASearchBox = compose(
         loadingElement: <div style={{ height: `100%` }}/>,
         containerElement: <div style={{ height: `100%`}}/>,
         mapElement: <div style={{ height: `100%` }}/>,
+        actions
     }),
     lifecycle({
         componentWillMount() {
@@ -45,12 +47,35 @@ export const MapWithASearchBox = compose(
                 isChange: false,
                 onMapMounted: ref => {
                     refs.map = ref;
+                    if(this.props.placesChanged){
+                        const places = this.props.placesChanged;
+                        const bounds = new google.maps.LatLngBounds();
+                        places.forEach(place => {
+                            if (place.geometry.viewport) {
+                                bounds.union(place.geometry.viewport)
+                            } else {
+                                bounds.extend(place.geometry.location)
+                            }
+                        });
+                        refs.map.fitBounds(bounds);
+
+                        const minLat = bounds.f.b;
+                        const maxLat = bounds.f.f;
+                        const minLng = bounds.b.b;
+                        const maxLng = bounds.b.f;
+
+                        this.props.actions.setLocation({arguments:{minLatitude:minLat, maxLatitude: maxLat, minLongitude: minLng, maxLongitude: maxLng}});
+                        this.props.actions.setIsLoaded(false);
+                    }
                 },
                 onSearchBoxMounted: ref => {
                     refs.searchBox = ref;
                 },
                 onPlacesChanged: () => {
-                    const places = refs.searchBox.getPlaces();
+                    const searchPlaces = refs.searchBox.getPlaces();
+                    this.props.setPlacesChanged(searchPlaces);
+
+                    const places = this.props.placesChanged;
                     const bounds = new google.maps.LatLngBounds();
 
                     places.forEach(place => {
@@ -125,7 +150,7 @@ export const MapWithASearchBox = compose(
                 controlPosition={google.maps.ControlPosition.TOP_CENTER}
                 onPlacesChanged={props.onPlacesChanged}
             >
-                <Input type="text" className='custom_inputs search-box' placeholder='Lokalizacja' style={{width: 400+'px', marginTop: 10+'px'}}/>
+                <Input type="text" className='custom_inputs search-box' placeholder='Lokalizacja' style={{width: 400+'px', marginTop: 10+'px'}} />
             </SearchBox>
             {props.markers.map((marker, index) =>
                 <Marker key={index} position={marker.position} />

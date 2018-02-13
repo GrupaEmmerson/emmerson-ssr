@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {
-  Nav,
-  NavItem,
-  NavLink,
-  NavbarToggler,
-  NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    NavbarToggler,
+    NavbarBrand,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    DropdownToggle
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -16,8 +20,12 @@ class HeaderMainPage extends Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.toggle2 = this.toggle2.bind(this);
+    this.toggle3 = this.toggle3.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      dropdownOpen2: false,
+      dropdownOpen3: false
     };
   }
 
@@ -32,6 +40,16 @@ class HeaderMainPage extends Component {
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+  toggle2() {
+    this.setState({
+      dropdownOpen2: !this.state.dropdownOpen2
+    });
+  }
+  toggle3() {
+    this.setState({
+      dropdownOpen3: !this.state.dropdownOpen3
     });
   }
 
@@ -60,13 +78,47 @@ class HeaderMainPage extends Component {
               <Nav className="ml-auto" navbar>
 
                   <NavItem className="px-3 d-md-down-none">
-                      <NavLink href="#" onClick={()=>{this.props.setSearchProperties('&buy=1&rent=0'); this.props.setIsLoaded(false);}}>Usługi dodatkowe</NavLink>
+                      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                          <DropdownToggle className="nav-link dropdown-toggle">
+                              Usługi dodatkowe
+                          </DropdownToggle>
+                          <DropdownMenu right className={this.state.dropdownOpen ? 'show' : ''}>
+                              <DropdownItem><i className="fa fa-file"></i> Badania i Analizy rynku</DropdownItem>
+                              <DropdownItem><i className="fa fa-home"></i> Zarządzanie nieruchomościami</DropdownItem>
+                              <DropdownItem><i className="fa fa-image"></i> Aranżacja i wyposażenie wnętrz</DropdownItem>
+                              <DropdownItem><i className="fa fa-comments"></i> Obsługa inwestycji</DropdownItem>
+                              <DropdownItem><i className="fa fa-legal"></i> Doradztwo gospodarcze</DropdownItem>
+                              <DropdownItem><i className="fa fa-building"></i> Inwestowanie w nieruchomości</DropdownItem>
+                              <DropdownItem><i className="fa fa-video-camera"></i> Marketing i reklama</DropdownItem>
+                              <DropdownItem><i className="fa fa-usd"></i> Wyceny nieruchomości</DropdownItem>
+                              <DropdownItem><i className="fa fa-lightbulb-o"></i> Inspiracje</DropdownItem>
+                          </DropdownMenu>
+                      </Dropdown>
                   </NavItem>
                   <NavItem className="px-3 d-md-down-none">
-                      <NavLink href="#" onClick={()=>{this.props.setSearchProperties('&buy=1&rent=0'); this.props.setIsLoaded(false);}}>O nas</NavLink>
+                      <Dropdown isOpen={this.state.dropdownOpen2} toggle={this.toggle2}>
+                          <DropdownToggle className="nav-link dropdown-toggle">
+                              O Nas
+                          </DropdownToggle>
+                          <DropdownMenu right className={this.state.dropdownOpen2 ? 'show' : ''}>
+                              <DropdownItem><i className="fa fa-info-circle"></i> Misja</DropdownItem>
+                              <DropdownItem><i className="fa fa-history"></i> Historia</DropdownItem>
+                              <DropdownItem><i className="fa fa-shield"></i> Praca</DropdownItem>
+                              <DropdownItem><i className="fa fa-institution"></i> System franczyzowy</DropdownItem>
+                              <DropdownItem><i className="fa fa-handshake-o"></i> Nasi partnerzy</DropdownItem>
+                          </DropdownMenu>
+                      </Dropdown>
                   </NavItem>
                   <NavItem className="px-3 d-md-down-none">
-                      <NavLink href="#" onClick={()=>{this.props.setSearchProperties('&buy=1&rent=0'); this.props.setIsLoaded(false);}}>Kontakt</NavLink>
+                      <Dropdown isOpen={this.state.dropdownOpen3} toggle={this.toggle3}>
+                          <DropdownToggle className="nav-link dropdown-toggle">
+                              Kontakt
+                          </DropdownToggle>
+                          <DropdownMenu right className={this.state.dropdownOpen3 ? 'show' : ''}>
+                              <DropdownItem><i className="fa fa-map"></i> Nasze biura</DropdownItem>
+                              <DropdownItem><i className="fa fa-phone"></i> Napisz do nas</DropdownItem>
+                          </DropdownMenu>
+                      </Dropdown>
                   </NavItem>
 
               </Nav>

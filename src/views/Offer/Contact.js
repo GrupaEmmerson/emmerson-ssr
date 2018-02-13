@@ -27,7 +27,7 @@ class Contact extends Component {
         return (
             <div className="container-fluid nopadding" >
                 <div className="row nopadding">
-                    <div className="col-xl-12 col-lg-4 col-md-5 col-sm-12">
+                    <div className="col-12 nopadding">
                         <form>
                             <legend><span className="fa fa-envelope"></span> Kontakt:</legend>
                             <div className='row'>
@@ -51,7 +51,7 @@ class Contact extends Component {
                             </div>
                         </form>
                     </div>
-                    <div className="well well-sm col-xl-12 col-lg-8 col-md-7 col-sm-12">
+                    <div className="well well-sm col-12 nopadding">
                         <form>
                             <div className="row">
                                 <div className="col-md-12">

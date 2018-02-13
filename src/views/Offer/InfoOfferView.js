@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Lightbox from 'react-image-lightbox';
+import Contact from './Contact';
 
 let testWeakMap = new WeakMap();
 
@@ -23,12 +24,13 @@ class InfoOfferView extends Component {
         testWeakMap.set(this, value);
     }
 
-    renderField([key,value]){
+    renderField(value){
+        console.log(value);
         return(
-            <div key={key} className='row col-12 nopadding' style={{color: '#000'}}>
-                <div className="col-6 nopadding">{key.toString()}:</div>
+            <div key={value.name} className='row col-12 nopadding' style={{color: '#000'}}>
+                <div className="col-6 nopadding">{value.name}:</div>
                 <div className="col-6 nopadding">
-                    <div className="float-right">{value.toString()}</div>
+                    <div className="float-right">{value.value}</div>
                 </div>
             </div>
         );
@@ -37,30 +39,43 @@ class InfoOfferView extends Component {
     renderFields(array){
 
         return(
-            Object.entries(array).map(this.renderField.bind(this))
+            this.renderField(array)
         );
     }
 
     render() {
         const { offer } = this.props;
-        return(
-          <div>
+        console.log(offer);
 
+        return(
+          <div className='col-12'>
               {offer.feature.map((attribute, index) => {
                   /**
                    * Aby działały rzuty nazwa pola musi być taka sama jak pole atrybutu.
                    */
-                  if(attribute.name === 'Rzut')
+                  if(attribute.name === "Rzuty")
                   {
+                    if(attribute.value.length === 0)
+                        return(
+                            <div key={index+'main'}>
+                                <div style={{borderBottom: '1px solid #e3001b', color: '#fff', margin: 0, padding: 0, fontSize: 14+'px', marginTop: 40+'px'}}>
+                                    <div key={attribute.name} style={{backgroundColor: '#e3001b', padding: 4+'px'}} className='col-9'>{attribute.name}:</div>
+                                </div>
+                                <div style={{marginTop: 10+'px'}}>
+                                    Zapytaj o rzut doradcę
+                                </div>
+                            </div>
+                        );
+                    else{
                       return(
-                          <div key={index}>
+                          <div key={index+'main'}>
                               <div style={{borderBottom: '1px solid #e3001b', color: '#fff', margin: 0, padding: 0, fontSize: 14+'px', marginTop: 40+'px'}}>
                                   <div key={attribute.name} style={{backgroundColor: '#e3001b', padding: 4+'px'}} className='col-9'>{attribute.name}:</div>
                               </div>
                               {
-                                  attribute.value.map(array => {
+                                  attribute.value.map( (array, index) => {
                                       return(
-                                          <div>
+                                          <div key={index+'sub'}>
                                               <img src={array.floorPlan[0].link} style={{width: 100+'%',
                                                   cursor: 'pointer'}} onClick={()=>this.setState({ isOpen: true, photoIndex: 0 })} alt={array.floorPlan[0].description}/>
                                               {this.state.isOpen && (
@@ -87,6 +102,7 @@ class InfoOfferView extends Component {
                               }
                           </div>
                       )
+                    }
                   }
                   return(
                       <div key={index}>

@@ -6,7 +6,9 @@ import offersReducer from './offers_reducer';
 import isLoadedReducer from './is_loaded_reducer';
 import searchPropertiesReducer from './search_properties_reducer';
 import searchReducer from './search_reducer';
+import searchDataReducer from './search_data_reducer';
 import rowsCountReducer from './rows_count_reducer';
+import placesChangedReducer from './places_changed_reducer';
 
 
 const rootReducer = combineReducers({
@@ -17,7 +19,9 @@ const rootReducer = combineReducers({
   isLoaded: isLoadedReducer,
   searchProperties: searchPropertiesReducer,
   rowsCount: rowsCountReducer,
-  search: searchReducer
+  placesChanged: placesChangedReducer,
+  search: searchReducer,
+  searchData: searchDataReducer
 });
 
 export default rootReducer;

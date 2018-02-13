@@ -36,7 +36,7 @@ class Home extends Component {
     componentDidMount() {
 
         const searchProperties = this.props.searchProperties !== undefined ? this.props.searchProperties : '';
-        const search = this.props.search !== undefined ? this.props.search : '';
+        const search = this.props.search !== undefined ? this.props.search : '&priceFrom=0&priceTo=999999999&priceM2From=0&priceM2To=999999999&primaryMarket=0&secondaryMarket=1&commercialMarket=0&flatType=1&houseType=0&plotType=0&hallType=0&commercialUnitType=0&officeType=0&exclusive=0&zeroPercent=0';
 
         const apiUrl = `http://api-www.emmerson.pl/offers?` +
             'minLatitude=' + parseFloat(this.state.minLatitude) +
@@ -107,7 +107,7 @@ class Home extends Component {
             <div className='container-fluid' style={{margin: 0, paddingLeft: 15, paddingRight: 15}}>
                 <div className="row">
                     <div className="col-lg-9 col-md-12 col-sm-12 nopadding" id="left">
-                        <MapWithASearchBox viewport={this.props.viewport} tableData={this.props.offers.tableData}/>
+                        <MapWithASearchBox viewport={this.props.viewport} tableData={this.props.offers.tableData} placesChanged={this.props.placesChanged} {...this.props}/>
                     </div>
                     <div className="col-lg-3 col-md-12 col-sm-12 nopadding right-bar" style={{float: 'left'}}>
                         <OffersView tableData={this.props.offers.tableData} count={this.props.rowsCount}/>
@@ -127,7 +127,8 @@ function mapStateToProps(state){
         isLoaded: state.isLoaded.isLoaded,
         searchProperties: state.searchProperties.searchProperties,
         search: state.search.search,
-        rowsCount: state.rowsCount.rowsCount
+        rowsCount: state.rowsCount.rowsCount,
+        placesChanged: state.placesChanged.placesChanged
     }
 }
 

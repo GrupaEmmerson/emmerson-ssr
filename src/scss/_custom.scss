@@ -251,14 +251,15 @@ a:hover{
   }
 }
 
-.contact{
-  width: 100%;
+.contact-background{
   background-color: #e3001b;
-  margin: 0;
-  padding: 20px 0 20px 0;
-  height: auto;
-  position: relative;
   color: #fff;
+}
+
+@media (max-width: 1750px){
+  .contact{
+    display: none;
+  }
 }
 
 @media (min-width: 1750px) {
@@ -338,4 +339,14 @@ a:hover{
 }
 .cursor-ew-resize{
   cursor: ew-resize;
+}
+.app-header{
+  font-family: BebasNeue Regular, sans-serif, FontAwesome!important;
+  font-size: 20px!important;
+  font-weight: 300;
+}
+.app-header.navbar .nav-item .nav-link, .app-header.navbar .nav-item .dropdown-toggle{
+  font-family: BebasNeue Regular, sans-serif, FontAwesome!important;
+  font-size: 20px!important;
+  font-weight: 300;
 }

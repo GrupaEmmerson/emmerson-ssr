@@ -35,14 +35,6 @@ class HeaderNoSidebar extends Component {
 
               <Nav className="ml-auto" navbar>
 
-                  <NavItem className="px-3 d-md-down-none">
-                      <NavLink href="#" onClick={()=>{this.props.setSearchProperties('&buy=1&rent=0'); this.props.setIsLoaded(false); this.context.router.history.push('/')}}>Kup</NavLink>
-                  </NavItem>
-
-                  <NavItem className="px-3 d-md-down-none">
-                      <NavLink href="#" onClick={()=>{this.props.setSearchProperties('&buy=0&rent=1'); this.props.setIsLoaded(false); this.context.router.history.push('/')}}>Wynajmij</NavLink>
-                  </NavItem>
-
               </Nav>
           </header>
       )
