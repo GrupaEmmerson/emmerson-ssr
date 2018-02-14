@@ -53,8 +53,8 @@ class HeaderOffer extends React.Component {
                 <div className='col-12 row justify-content-end'>
                     { type_of_contract.map(ico => {
                         return(
-                            <div className='col-3 justify-content-end' style={{marginTop: 40+'px'}}>
-                                <img src={'./img/'+ ico} style={{height: 150+'%', float: 'right'}} alt={ico}/>
+                            <div className='justify-content-end' style={{marginTop: 40+'px'}}>
+                                <img src={'/img/'+ ico} style={{height: 150+'%', float: 'right'}} alt={ico}/>
                             </div>
                         )
                     })}

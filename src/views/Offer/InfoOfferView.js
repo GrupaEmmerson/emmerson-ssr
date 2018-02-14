@@ -76,22 +76,22 @@ class InfoOfferView extends Component {
                                   attribute.value.map( (array, index) => {
                                       return(
                                           <div key={index+'sub'}>
-                                              <img src={array.floorPlan[0].link} style={{width: 100+'%',
-                                                  cursor: 'pointer'}} onClick={()=>this.setState({ isOpen: true, photoIndex: 0 })} alt={array.floorPlan[0].description}/>
+                                              <img src={array.value[0].link} style={{width: 100+'%',
+                                                  cursor: 'pointer'}} onClick={()=>this.setState({ isOpen: true, photoIndex: 0 })} alt={array.value[0].description}/>
                                               {this.state.isOpen && (
                                                   <Lightbox
-                                                      mainSrc={array.floorPlan[this.state.photoIndex].link}
-                                                      nextSrc={array.floorPlan[(this.state.photoIndex + 1) % array.floorPlan.length].link}
-                                                      prevSrc={array.floorPlan[(this.state.photoIndex + array.floorPlan.length - 1) % array.floorPlan.length].link}
+                                                      mainSrc={array.value[this.state.photoIndex].link}
+                                                      nextSrc={array.value[(this.state.photoIndex + 1) % array.value.length].link}
+                                                      prevSrc={array.value[(this.state.photoIndex + array.value.length - 1) % array.value.length].link}
                                                       onCloseRequest={() => this.setState({ isOpen: false })}
                                                       onMovePrevRequest={() =>
                                                           this.setState({
-                                                              photoIndex: (this.state.photoIndex + array.floorPlan.length - 1) % array.floorPlan.length,
+                                                              photoIndex: (this.state.photoIndex + array.value.length - 1) % array.value.length,
                                                           })
                                                       }
                                                       onMoveNextRequest={() =>
                                                           this.setState({
-                                                              photoIndex: (this.state.photoIndex + 1) % array.floorPlan.length,
+                                                              photoIndex: (this.state.photoIndex + 1) % array.value.length,
                                                           })
                                                       }
                                                   />

@@ -76,7 +76,6 @@ class HeaderMainPage extends Component {
               </Nav>
 
               <Nav className="ml-auto" navbar>
-
                   <NavItem className="px-3 d-md-down-none">
                       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                           <DropdownToggle className="nav-link dropdown-toggle">
@@ -120,7 +119,6 @@ class HeaderMainPage extends Component {
                           </DropdownMenu>
                       </Dropdown>
                   </NavItem>
-
               </Nav>
           </header>
       )

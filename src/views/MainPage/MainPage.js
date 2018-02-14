@@ -81,64 +81,29 @@ const promoHouse = [
 
 const images = [
     {
-        link: '/img/slider/metrobielany_photo.jpg',
+        link: '/img/slider/MB.jpg',
         name: 'Metro Bielany',
-        sub_name: 'Warszawa-Bielany',
-        promo: [
-            {link: '/img/slider/promo/wybrane oferty z inwestycj2i-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji3-01-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji-01.jpg'},
-        ]
+        sub_name: 'Warszawa-Bielany'
     },
     {
-        link: '/img/slider/bobrowiecka_photo.jpg',
+        link: '/img/slider/B10.jpg',
         name: 'Bobrowiecka 10',
-        sub_name: 'Warszawa-Mokotów',
-        promo: [
-            {link: '/img/slider/promo/wybrane oferty z inwestycj2i-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji3-01-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji-01.jpg'},
-        ]
+        sub_name: 'Warszawa-Mokotów'
     },
     {
-        link: '/img/slider/cicha_dolina_photo.jpg',
+        link: '/img/slider/CD.jpg',
         name: 'Cicha Dolina',
-        sub_name: 'Warszawa-Wilanów',
-        promo: [
-            {link: '/img/slider/promo/wybrane oferty z inwestycj2i-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji3-01-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji-01.jpg'},
-        ]
+        sub_name: 'Warszawa-Wilanów'
     },
     {
-        link: '/img/slider/riverfront_photo.jpg',
+        link: '/img/slider/RF.jpg',
         name: 'Riverfront',
-        sub_name: 'Gdańsk',
-        promo: [
-            {link: '/img/slider/promo/wybrane oferty z inwestycj2i-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji3-01-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji-01.jpg'},
-        ]
+        sub_name: 'Gdańsk'
     },
     {
-        link: '/img/slider/Segmenty_Radzymin.jpg',
+        link: '/img/slider/SR.jpg',
         name: 'Segmenty Radzymin',
-        sub_name: 'Radzymin',
-        promo: [
-            {link: '/img/slider/promo/wybrane oferty z inwestycj2i-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji3-01-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji-01.jpg'},
-        ]
-    },
-    {
-        link: '/img/slider/cityzen_photo.jpg',
-        name: 'Cityzen',
-        sub_name: 'Warszawa-Mokotów',
-        promo: [
-            {link: '/img/slider/promo/wybrane oferty z inwestycj2i-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji3-01-01.jpg'},
-            {link: '/img/slider/promo/wybrane oferty z inwestycji-01.jpg'},
-        ]
+        sub_name: 'Radzymin'
     }
 ];
 
@@ -163,7 +128,6 @@ class MainPage extends Component {
             priceM2To: 999999999,
             primaryMarket: true,
             secondaryMarket: true,
-            commercialMarket: false,
             flatType: false,
             houseType: false,
             plotType: false,
@@ -213,19 +177,16 @@ class MainPage extends Component {
             case 3:
                 this.setState({
                     hallType: true,
-                    commercialMarket: true,
                 });
                 break;
             case 4:
                 this.setState({
                     commercialUnitType: true,
-                    commercialMarket: true,
                 });
                 break;
             case 5:
                 this.setState({
                     officeType: true,
-                    commercialMarket: true,
                 });
                 break;
             default:
@@ -242,7 +203,6 @@ class MainPage extends Component {
                 priceM2To: this.state.priceM2To,
                 primaryMarket: this.state.primaryMarket,
                 secondaryMarket: this.state.secondaryMarket,
-                commercialMarket: this.state.commercialMarket,
                 flatType: this.state.flatType,
                 houseType: this.state.houseType,
                 plotType: this.state.plotType,

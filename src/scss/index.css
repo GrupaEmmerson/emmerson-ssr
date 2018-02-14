@@ -8921,9 +8921,7 @@ a:hover {
 
 @media (max-width: 1750px) {
   .contact {
-    display: none; }
-  .contact-small-screen {
-    display: block; } }
+    display: none; } }
 
 @media (min-width: 1750px) {
   .contact {
@@ -8931,9 +8929,7 @@ a:hover {
     position: fixed;
     width: 300px;
     right: 0;
-    top: 80px; }
-  .contact-small-screen {
-    display: none; } }
+    top: 80px; } }
 
 .custom_inputs {
   font-size: 16px;

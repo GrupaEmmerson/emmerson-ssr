@@ -22,7 +22,6 @@ class Sidebar extends Component {
             priceM2To: this.props.searchData ? this.props.searchData['priceM2To'] : 999999999,
             primaryMarket: this.props.searchData ? this.props.searchData['primaryMarket'] : false,
             secondaryMarket: this.props.searchData ? this.props.searchData['secondaryMarket'] : true,
-            commercialMarket: this.props.searchData ? this.props.searchData['commercialMarket'] : false,
             flatType: this.props.searchData ? this.props.searchData['flatType'] : true,
             houseType: this.props.searchData ? this.props.searchData['houseType'] : false,
             plotType: this.props.searchData ? this.props.searchData['plotType'] : false,
@@ -51,7 +50,6 @@ class Sidebar extends Component {
                 priceM2To: this.props.searchData ? this.props.searchData['priceM2To'] : 999999999,
                 primaryMarket: this.props.searchData ? this.props.searchData['primaryMarket'] : false,
                 secondaryMarket: this.props.searchData ? this.props.searchData['secondaryMarket'] : true,
-                commercialMarket: this.props.searchData ? this.props.searchData['commercialMarket'] : false,
                 flatType: this.props.searchData ? this.props.searchData['flatType'] : true,
                 houseType: this.props.searchData ? this.props.searchData['houseType'] : false,
                 plotType: this.props.searchData ? this.props.searchData['plotType'] : false,
@@ -60,7 +58,23 @@ class Sidebar extends Component {
                 officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
                 exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
                 zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false
-            })
+            });
+            this.props.setSearch({
+                priceFrom: this.props.searchData ? this.props.searchData['priceFrom'] : 0,
+                priceTo: this.props.searchData ? this.props.searchData['priceTo'] : 999999999,
+                priceM2From: this.props.searchData ? this.props.searchData['priceM2From'] : 0,
+                priceM2To: this.props.searchData ? this.props.searchData['priceM2To'] : 999999999,
+                primaryMarket: this.props.searchData ? this.props.searchData['primaryMarket'] : false,
+                secondaryMarket: this.props.searchData ? this.props.searchData['secondaryMarket'] : true,
+                flatType: this.props.searchData ? this.props.searchData['flatType'] : true,
+                houseType: this.props.searchData ? this.props.searchData['houseType'] : false,
+                plotType: this.props.searchData ? this.props.searchData['plotType'] : false,
+                hallType: this.props.searchData ? this.props.searchData['hallType'] : false,
+                commercialUnitType: this.props.searchData ? this.props.searchData['commercialUnitType'] : false,
+                officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
+                exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
+                zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false
+            });
         }
     }
     checkValid(){
@@ -239,9 +253,6 @@ class Sidebar extends Component {
                                         <Field
                                             component={checkInput} className="form-check-input" type="checkbox" name="secondaryMarket"
                                             id="secondaryMarket" label='&nbsp;Wtórny' value={this.state.secondaryMarket} checked={this.state.secondaryMarket}  onChange={this.handleInputChange}/>
-                                        <Field
-                                            component={checkInput} className="form-check-input" type="checkbox" name="commercialMarket"
-                                            id="commercialMarket" label='&nbsp;Komercyjny' value={this.state.commercialMarket} checked={this.state.commercialMarket}  onChange={this.handleInputChange}/>
                                     </div>
                                 </div>
 
@@ -330,7 +341,6 @@ export default Sidebar = reduxForm({
             'priceM2To',
             'primaryMarket',
             'secondaryMarket',
-            'commercialMarket',
             'flatType',
             'houseType',
             'plotType',

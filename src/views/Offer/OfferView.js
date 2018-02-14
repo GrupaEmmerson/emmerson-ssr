@@ -8,6 +8,7 @@ import { MapOfferContainer } from './MapOfferContainer';
 import InfoOfferView from  './InfoOfferView';
 import HeaderOffer from "./HeaderOffer";
 import { FacebookButton, GooglePlusButton, TwitterButton } from "react-social";
+import {API_DIR, API_PORT} from "../../config/parameters";
 
 let testWeakMap = new WeakMap();
 
@@ -37,7 +38,7 @@ class OfferView extends Component {
     }
 
     componentDidMount(){
-        const apiUrl = `http://api-www.emmerson.pl/offer/`;
+        const apiUrl =  API_DIR+API_PORT+`/offer/`;
 
         const url = [apiUrl + this.props.match.params.id].join("");
 
@@ -50,7 +51,6 @@ class OfferView extends Component {
                     // picture: 'http://test.draftway.pl/img/26-googleplusreviews.jpg',
                     description: this.state.offer.description.replace(/<\/?[^>]+(>|$)/g, "").substring(0,247) + '...'
                 });
-                this.facebookShare();
             });
 
         window.fbAsyncInit = function() {
@@ -71,38 +71,6 @@ class OfferView extends Component {
         }(document, 'script', 'facebook-jssdk'));
     }
 
-    facebookShare(){
-
-        const link = this.state.link;
-        const picture = this.state.picture;
-        const name = this.state.name;
-        const caption = this.state.caption;
-        const description = this.state.description;
-        const redirect_uri = this.state.redirect_uri;
-
-        document.getElementById('shareBtn').onclick = function() {
-            FB.ui({
-                method: 'share_open_graph',
-                action_type: 'og.shares',
-                display: 'popup',
-                type: 'large',
-                action_properties: JSON.stringify({
-                    object: {
-                        'og:url': link,
-                        'og:title': name,
-                        'og:caption': caption,
-                        'og:description': description,
-                        'og:redirect_uri': redirect_uri,
-                        'og:image': picture,
-                        'og:image:width': 1200,
-                        'og:image:height': 622
-                    }
-                })
-            }, function(response) {
-                // Action after response
-            });
-        }
-    }
 
     render() {
 
@@ -163,8 +131,7 @@ class OfferView extends Component {
                                 </div>
 
                                 <div className="col-12 row nopadding">
-                                    <div id="fb-root"></div>
-                                    <FacebookButton id='shareBtn' url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-facebook col-12 col-sm-6 col-md-6 col-lg-3 fb-share-button" style={{marginTop: 10+'px'}}>
+                                    <FacebookButton url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-facebook col-12 col-sm-6 col-md-6 col-lg-3 fb-share-button" style={{marginTop: 10+'px'}}>
                                         <span> Facebook</span>
                                     </FacebookButton>
                                     <GooglePlusButton url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-google-plus col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}>

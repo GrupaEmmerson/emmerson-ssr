@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import { MapWithASearchBox } from './MapContainer'
 import OffersView from "./OffersView";
+import {API_DIR, API_PORT} from "../../config/parameters";
 
 let testWeakMap = new WeakMap();
 
@@ -38,7 +39,7 @@ class Home extends Component {
         const searchProperties = this.props.searchProperties !== undefined ? this.props.searchProperties : '';
         const search = this.props.search !== undefined ? this.props.search : '&priceFrom=0&priceTo=999999999&priceM2From=0&priceM2To=999999999&primaryMarket=0&secondaryMarket=1&commercialMarket=0&flatType=1&houseType=0&plotType=0&hallType=0&commercialUnitType=0&officeType=0&exclusive=0&zeroPercent=0';
 
-        const apiUrl = `http://api-www.emmerson.pl/offers?` +
+        const apiUrl = API_DIR+API_PORT+`/offers?` +
             'minLatitude=' + parseFloat(this.state.minLatitude) +
             '&maxLatitude=' + parseFloat(this.state.maxLatitude) +
             '&minLongitude=' + parseFloat(this.state.minLongitude) +
@@ -65,7 +66,7 @@ class Home extends Component {
                 let apiUrl = null;
                 if(!this.props.location)
                 {
-                     apiUrl = `http://api-www.emmerson.pl/offers?` +
+                     apiUrl =  API_DIR+API_PORT+`offers?` +
                         'minLatitude=' + parseFloat(this.state.minLatitude) +
                         '&maxLatitude=' + parseFloat(this.state.maxLatitude) +
                         '&minLongitude=' + parseFloat(this.state.minLongitude) +
@@ -73,7 +74,7 @@ class Home extends Component {
                 }
                 else
                 {
-                     apiUrl = `http://api-www.emmerson.pl/offers?`+
+                     apiUrl =  API_DIR+API_PORT+`/offers?`+
                         'minLatitude='+ parseFloat(this.props.location.arguments.minLatitude) +
                         '&maxLatitude='+ parseFloat(this.props.location.arguments.maxLatitude) +
                         '&minLongitude='+ parseFloat(this.props.location.arguments.minLongitude) +
@@ -90,7 +91,7 @@ class Home extends Component {
                 this.props.setIsLoaded(true);
                 setTimeout(()=>{
                     this.props.setRowsCount(20);},2000);
-            },100);
+            },500);
         }
     }
 

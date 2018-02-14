@@ -1,0 +1,6 @@
+{
+  "name": "SidebarMainPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./SidebarMainPage.js"
+}

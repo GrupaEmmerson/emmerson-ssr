@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import HeaderMainPage from '../../components/HeaderMainPage/';
 import MainPage from '../../views/MainPage/';
 import Footer from "../../components/Footer/Footer";
+import SidebarMainPage from '../../components/SidebarMainPage/';
 
 class MainPageContainer extends Component {
     render() {
@@ -9,7 +10,8 @@ class MainPageContainer extends Component {
             <div className="app">
                 <HeaderMainPage />
                 <div className="app-body">
-                    <main className="main nopadding">
+                    <SidebarMainPage {...this.props}/>
+                    <main className="main" >
                         <MainPage/>
                     </main>
                 </div>
