@@ -8,7 +8,7 @@ import { MapOfferContainer } from './MapOfferContainer';
 import InfoOfferView from  './InfoOfferView';
 import HeaderOffer from "./HeaderOffer";
 import { FacebookButton, GooglePlusButton, TwitterButton } from "react-social";
-import {API_DIR, API_PORT} from "../../config/parameters";
+import {API_DIR, API_PORT, DIR_URL} from "../../config/parameters";
 
 let testWeakMap = new WeakMap();
 
@@ -18,12 +18,12 @@ class OfferView extends Component {
         super(props);
         this.state = {
             offer: null,
-            baseUrl: 'http://test.draftway.pl',
-            link : 'http://test.draftway.pl/#/offer/' + this.props.match.params.id,
+            baseUrl: DIR_URL,
+            link : DIR_URL+'/offer/' + this.props.match.params.id,
             name : 'Emmerson Realty S.A.',
             caption : 'Emmerson Realty S.A',
             description :  '-',
-            redirect_uri : 'http://test.draftway.pl/#/offer/' + this.props.match.params.id,
+            redirect_uri : DIR_URL+'/offer/' + this.props.match.params.id,
             appId: 1537301123055501
         };
 

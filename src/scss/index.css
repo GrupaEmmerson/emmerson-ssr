@@ -8919,11 +8919,13 @@ a:hover {
   background-color: #e3001b;
   color: #fff; }
 
-@media (max-width: 1750px) {
+@media (max-width: 1749px) {
   .contact {
     display: none; } }
 
 @media (min-width: 1750px) {
+  .contact-small-screen {
+    display: none; }
   .contact {
     margin: 40px 0 0 0;
     position: fixed;
