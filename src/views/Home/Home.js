@@ -67,7 +67,7 @@ class Home extends Component {
                 let apiUrl = null;
                 if(!this.props.location)
                 {
-                     apiUrl =  API_DIR+API_PORT+`offers?` +
+                     apiUrl =  API_DIR+API_PORT+`/offers?` +
                         'minLatitude=' + parseFloat(this.state.minLatitude) +
                         '&maxLatitude=' + parseFloat(this.state.maxLatitude) +
                         '&minLongitude=' + parseFloat(this.state.minLongitude) +
