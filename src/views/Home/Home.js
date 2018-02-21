@@ -37,13 +37,13 @@ class Home extends Component {
     componentDidMount() {
 
         const searchProperties = this.props.searchProperties !== undefined ? this.props.searchProperties : '';
-        const search = this.props.search !== undefined ? this.props.search : '&priceFrom=0&priceTo=999999999&priceM2From=0&priceM2To=999999999&primaryMarket=0&secondaryMarket=1&commercialMarket=0&flatType=1&houseType=0&plotType=0&hallType=0&commercialUnitType=0&officeType=0&exclusive=0&zeroPercent=0';
-
+        const search = this.props.search !== undefined ? this.props.search : '&priceFrom=0&priceTo=999999999&priceM2From=0&priceM2To=999999999&primaryMarket=0&secondaryMarket=1&flatType=1&houseType=0&plotType=0&hallType=0&commercialUnitType=0&officeType=0&exclusive=0&zeroPercent=0';
+        const searchLocation = this.props.searchLocation !== undefined ? this.props.searchLocation : '';
         const apiUrl = API_DIR+API_PORT+`/offers?` +
             'minLatitude=' + parseFloat(this.state.minLatitude) +
             '&maxLatitude=' + parseFloat(this.state.maxLatitude) +
             '&minLongitude=' + parseFloat(this.state.minLongitude) +
-            '&maxLongitude=' + parseFloat(this.state.maxLongitude) + searchProperties + search;
+            '&maxLongitude=' + parseFloat(this.state.maxLongitude) + searchProperties + search + searchLocation;
 
         const url = [apiUrl].join("");
         fetch(url)
@@ -62,6 +62,7 @@ class Home extends Component {
             this.props.setRowsCount(0);
             const searchProperties = this.props.searchProperties !== undefined ? this.props.searchProperties : '';
             const search = this.props.search !== undefined ? this.props.search : '';
+            const searchLocation = this.props.searchLocation !== undefined ? this.props.searchLocation : '';
             setTimeout(()=>{
                 let apiUrl = null;
                 if(!this.props.location)
@@ -70,7 +71,7 @@ class Home extends Component {
                         'minLatitude=' + parseFloat(this.state.minLatitude) +
                         '&maxLatitude=' + parseFloat(this.state.maxLatitude) +
                         '&minLongitude=' + parseFloat(this.state.minLongitude) +
-                        '&maxLongitude=' + parseFloat(this.state.maxLongitude) + searchProperties + search;
+                        '&maxLongitude=' + parseFloat(this.state.maxLongitude) + searchProperties + search + searchLocation;
                 }
                 else
                 {
@@ -78,7 +79,7 @@ class Home extends Component {
                         'minLatitude='+ parseFloat(this.props.location.arguments.minLatitude) +
                         '&maxLatitude='+ parseFloat(this.props.location.arguments.maxLatitude) +
                         '&minLongitude='+ parseFloat(this.props.location.arguments.minLongitude) +
-                        '&maxLongitude='+ parseFloat(this.props.location.arguments.maxLongitude) + searchProperties + search;
+                        '&maxLongitude='+ parseFloat(this.props.location.arguments.maxLongitude) + searchProperties + search + searchLocation;
                 }
 
                 const url = [apiUrl].join("");
@@ -129,7 +130,8 @@ function mapStateToProps(state){
         searchProperties: state.searchProperties.searchProperties,
         search: state.search.search,
         rowsCount: state.rowsCount.rowsCount,
-        placesChanged: state.placesChanged.placesChanged
+        placesChanged: state.placesChanged.placesChanged,
+        searchLocation: state.searchLocation.searchLocation
     }
 }
 

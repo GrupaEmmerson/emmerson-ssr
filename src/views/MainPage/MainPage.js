@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import Slider from 'react-slick';
+import ImageOfferBox from "./ImageOfferBox";
 
 let testWeakMap = new WeakMap();
 
@@ -404,7 +405,7 @@ class MainPage extends Component {
                                     {promoHouse.map((e, index) => {
                                         return (
                                             <div className='col-12 col-sm-12 col-md-6 col-lg-4' style={{padding: 2+'px', margin: 0}} key={index}>
-                                                <AutoFitImage frameWidth='100%'  frameHeight="220px" imgSrc={e.link} imgSize='contain'/>
+                                                <ImageOfferBox image={images[0].link}/>
                                             </div>
                                         )
                                     })}

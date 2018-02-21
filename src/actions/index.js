@@ -1,6 +1,6 @@
 import {
     GET_LOCATION, GET_VIEWPORT, GET_OFFERS, IS_LOADED, GET_PROPERTIES, GET_SEARCH, GET_ROWS_COUNT,
-    GET_PLACES_CHANGED, GET_SEARCH_DATA
+    GET_PLACES_CHANGED, GET_SEARCH_DATA, GET_SEARCH_LOCATION
 } from './types';
 
 export function setLocation(location) {
@@ -57,6 +57,16 @@ export function setSearchData(data) {
 
     return function (dispatch) {
         dispatch({type: GET_SEARCH_DATA, payload: data});
+    }
+}
+
+export function setSearchLocation(data) {
+    let url = Object.keys(data).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]).replace(/true/, '1').replace(/false/, '0')
+    }).join('&');
+
+    return function (dispatch) {
+        dispatch({type: GET_SEARCH_LOCATION, payload: '&'+url});
     }
 }
 

@@ -72,10 +72,46 @@ export const MapWithASearchBox = compose(
                     refs.searchBox = ref;
                 },
                 onPlacesChanged: () => {
+                    let street = '';
+                    let district = '';
+                    let city = '';
+
                     const searchPlaces = refs.searchBox.getPlaces();
                     this.props.setPlacesChanged(searchPlaces);
-
                     const places = this.props.placesChanged;
+                    console.log(places);
+
+                    if(places){
+                        places.forEach(place => {
+                            if(place.address_components){
+                                if(place.address_components[0].types[0] === 'route'){
+                                    street = place.address_components[0].long_name;
+                                    city =  place.address_components[1].long_name;
+                                }
+                                if(place.address_components[0].types[0] === 'sublocality_level_1'){
+                                    district = place.address_components[0].long_name;
+                                    city =  place.address_components[1].long_name;
+                                }
+                                if(place.address_components[0].types[0] === 'locality'){
+                                    city =  place.address_components[0].long_name;
+                                }
+                            }
+                            else{
+                                if(place.types[0] === 'locality'){
+                                    city = place.name
+                                }
+                                if(place.types[0] === 'route'){
+                                    street = place.name
+                                }
+                                if(place.types[0] === 'sublocality_level_1'){
+                                    district = place.name
+                                }
+                            }
+                        })
+                    }
+
+                    let placesSearch = {street: street, district: district,city: city};
+                    this.props.setSearchLocation(placesSearch);
                     const bounds = new google.maps.LatLngBounds();
 
                     places.forEach(place => {
@@ -86,7 +122,9 @@ export const MapWithASearchBox = compose(
                         }
                     });
                     const nextMarkers = places.map(place => ({
-                        position: place.geometry.location,
+
+                        position: place.address_components ? place.geometry.location : null,
+
                     }));
                     const nextCenter = _.get(nextMarkers, '0.position', this.state.center);
 
