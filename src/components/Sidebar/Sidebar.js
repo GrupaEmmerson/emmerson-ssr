@@ -100,7 +100,6 @@ class Sidebar extends Component {
     }
 
     handleFormSubmit(formData) {
-        console.log(formData);
         if( this.checkValid() )
         {
             return (

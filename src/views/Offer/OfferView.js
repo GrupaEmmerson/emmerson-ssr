@@ -99,7 +99,7 @@ class OfferView extends Component {
                         </div>
 
                         <div className='contact contact-background' style={{padding: '20px 20px', margin: 0, height: 'auto'}}>
-                            <Contact adviser={this.state.offer.adviser}/>
+                            <Contact adviser={this.state.offer.adviser} {...this.props}/>
                         </div>
 
                         <div className='offer-box col-12 col-sm-12 col-md-12 col-lg-12 row nopadding' style={{marginTop: 50+'px'}} >
@@ -111,9 +111,9 @@ class OfferView extends Component {
                                 <SimpleSlider images={this.state.offer.photo}/>
                             </div>
 
-                            <div className='col-12 col-sm-12 col-md-5 col-lg-3 nopadding' style={{marginBottom: 40+'px'}}>
+                            <div className='col-12 col-sm-12 col-md-5 col-lg-3 nopadding' style={{marginBottom: 40+'px', paddingBottom: 40+'px'}}>
                                 <div className='col-12 contact-background contact-small-screen' style={{padding: '20px 10px', margin: 0, height: 'auto', marginBottom: 40+'px', marginTop: 40+'px'}}>
-                                    <Contact adviser={this.state.offer.adviser}/>
+                                    <Contact adviser={this.state.offer.adviser} {...this.props}/>
                                 </div>
                                 <InfoOfferView offer={this.state.offer}/>
                             </div>
@@ -140,7 +140,9 @@ class OfferView extends Component {
                                     <TwitterButton url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-twitter col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}>
                                         <span> Twitter</span>
                                     </TwitterButton>
-                                    <button className="btn btn-lg btn-pinterest text col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}><i className="fa fa-file-pdf-o"></i>&nbsp;Zapisz do PDF</button>
+                                    <button className="btn btn-lg btn-pinterest text col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}
+                                    onClick={()=>window.location = 'http://program.emmerson.pl/Administracja/admSzablonyDokument.aspx?IdSzablon=491&Obiekt=virgoLib.Oferta&idek='+this.state.offer.id+'&typ=pdf'}>
+                                        <i className="fa fa-file-pdf-o"></i>&nbsp;Zapisz do PDF</button>
                                 </div>
 
                                 <div style={{borderBottom: '1px solid #e3001b', color: '#fff', margin: 0, padding: 0, fontSize: 14+'px', marginTop: 40+'px'}}>

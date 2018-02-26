@@ -375,41 +375,54 @@ class MainPage extends Component {
                     </div>
                     <div className='container' style={{paddingTop: 50+'px', paddingBottom: 50+'px'}}>
                         <div className='row nopadding'>
-                            <div className='info-invest-box col-12 col-sm-12 col-md-12 col-lg-12' style={{
+                            <div className='info-invest-box col-12 col-sm-12 col-md-6 col-lg-4' style={{
                                 fontFamily: 'BebasNeue Regular, sans-serif, FontAwesome',
                                 color: '#000',
                                 textAlign: 'center',
-                                padding: 2+'px', margin: 0}}>
-                                <h1>Wyróżnione oferty mieszkań</h1>
+                                padding: 2+'px', margin: 0, paddingBottom: 40+'px'}}>
+                                <img src='/img/home_why_us_01.jpg' style={{width: 100+'%'}}/>
+                                <h3>10 TYSIĘCY OFERT NIERUCHOMOŚCI W CAŁYM KRAJU</h3>
+                                <div className='col-12 text-justify'>
+                                    Bogata baza ofert z całego kraju zapewnia komfort wyboru nieruchomości
+                                    dostosowanych do różnych możliwości finansowych i spełniających najróżniejsze
+                                    oczekiwania pod względem lokalizacji, powierzchni, standardu, wykończenia i wielu
+                                    innych parametrów. Znajdź idealne mieszkanie, dom, lokal użytkowy lub biuro dla
+                                    siebie!
+                                </div>
                             </div>
-                            <div className='col-12'>
-                                <Slider {...settingsOffer}>
-                                    {promoFlat.map((e, index) => {
-                                        return (
-                                            <div className='col-12 col-sm-12 col-md-6 col-lg-4' style={{padding: 2+'px', margin: 0}} key={index}>
-                                                <AutoFitImage frameWidth='100%' frameHeight="220px" imgSrc={e.link} imgSize='contain'/>
-                                            </div>
-                                        )
-                                    })}
-                                </Slider>
-                            </div>
-                            <div className='info-invest-box col-12 col-sm-12 col-md-12 col-lg-12' style={{
+
+                            <div className='info-invest-box col-12 col-sm-12 col-md-6 col-lg-4' style={{
                                 fontFamily: 'BebasNeue Regular, sans-serif, FontAwesome',
                                 color: '#000',
                                 textAlign: 'center',
-                                padding: 2+'px', margin: 0, paddingTop: 50+'px'}}>
-                                <h1>Wyróżnione oferty domów</h1>
+                                padding: 2+'px', margin: 0, paddingBottom: 40+'px'}}>
+                                <img src='/img/home_why_us_02.jpg' style={{width: 100+'%'}}/>
+                                <h3>POZNAJ LOKALNE RYNKI NIERUCHOMOŚCI W POLSCE</h3>
+                                <div className='col-12 text-justify'>
+                                    Zakup nieruchomości warto poprzedzić analizą lokalnego rynku. Możemy uniknąć w ten
+                                    sposób wielu niespodzianek. Skorzystaj z doradztwa ekspertów, którzy łączą znajomość
+                                    nowoczesnych narzędzi badawczych z obszerną wiedzą i doświadczeniem, zdobywanym od
+                                    początku istnienia nowoczesnego rynku nieruchomości w Polsce. Dysponując bogatą bazą
+                                    historycznych i aktualnych danych, przygotujemy dla Ciebie eksperckie opracowanie
+                                    niezbędne w planowaniu przedsięwzięć o charakterze inwestycyjnym.
+                                </div>
                             </div>
-                            <div className='col-12'>
-                                <Slider {...settingsOffer}>
-                                    {promoHouse.map((e, index) => {
-                                        return (
-                                            <div className='col-12 col-sm-12 col-md-6 col-lg-4' style={{padding: 2+'px', margin: 0}} key={index}>
-                                                <ImageOfferBox image={images[0].link}/>
-                                            </div>
-                                        )
-                                    })}
-                                </Slider>
+
+                            <div className='info-invest-box col-12 col-sm-12 col-md-6 col-lg-4' style={{
+                                fontFamily: 'BebasNeue Regular, sans-serif, FontAwesome',
+                                color: '#000',
+                                textAlign: 'center',
+                                padding: 2+'px', margin: 0, paddingBottom: 40+'px'}}>
+                                <img src='/img/home_why_us_03.jpg' style={{width: 100+'%'}}/>
+                                <h3>PORÓWNAJ CENY OFERTOWE I TRANSAKCYJNE</h3>
+                                <div className='col-12 text-justify'>
+                                    Większość analiz rynku nieruchomości opartych jest na badaniach cen ofertowych,
+                                    czyli dyktowanych przez właścicieli. Takie analizy niezbyt wiernie odzwierciedlają
+                                    rzeczywistą sytuację na rynku sprzedaży. Nasze badania uwzględniają również ceny
+                                    transakcyjne. gromadzone i aktualizowane w ciągu wielu lat naszej działalności.
+                                    Dzięki temu również nasze analizy są bliższe rynkowej rzeczywistości.
+                                    Poznaj rynkową wartość wybranej przez siebie nieruchomości!
+                                </div>
                             </div>
                         </div>
                     </div>

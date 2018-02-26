@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
+import { reduxForm, Field, change as changeFieldValue} from 'redux-form';
 import * as actions from '../../actions';
+import {API_DIR, API_PORT, DIR_URL} from "../../config/parameters";
 
 let testWeakMap = new WeakMap();
 
@@ -8,8 +10,13 @@ class Contact extends Component {
 
     constructor (props) {
         super(props);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.state = {
-
+            message: 'Jestem zainteresowany ofertą nr ... opublikowaną na stronie www.emmerson.pl. Proszę o kontakt.',
+            tel: null,
+            email: null,
+            name: null
         };
 
     }
@@ -22,8 +29,54 @@ class Contact extends Component {
         testWeakMap.set(this, value);
     }
 
+    componentDidMount() {
+        const apiUrl = API_DIR + API_PORT + `/offer/`;
+
+        const url = [apiUrl + this.props.match.params.id].join("");
+
+        fetch(url)
+            .then(res => res.json())
+            .then(response => {
+                this.setState({offer: response});
+                this.setState({message: 'Jestem zainteresowany ofertą nr '+this.state.offer.number+' opublikowaną na stronie www.emmerson.pl. Proszę o kontakt. '})
+            });
+    }
+
+    handleFormSubmit(event) {
+        console.log(event);
+        this.props.sentMessage({
+            tel: this.state.tel,
+            email: this.state.email,
+            name: this.state.name,
+            message: this.state.message
+        });
+
+        this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
+        this.props.dispatch(changeFieldValue("sentMessage", "email", null));
+        this.props.dispatch(changeFieldValue("sentMessage", "name", null));
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     render() {
-        const { adviser } = this.props;
+        const {
+            adviser,
+            handleSubmit
+        } = this.props;
+        const TextArea = ({input:{ checked, onChange, name, value}, className, placeholder, id, label, type, children}) => (
+
+            <textarea name={name} id={id} type='textarea' className="form-control" rows="9" cols="25" required="required"
+               placeholder="" value={value ? value :  this.state.message } onChange={onChange}/>
+        );
+
         return (
             <div className="container-fluid nopadding" >
                 <div className="row nopadding">
@@ -52,13 +105,14 @@ class Contact extends Component {
                         </form>
                     </div>
                     <div className="well well-sm col-12 nopadding">
-                        <form>
+                        <form onSubmit={handleSubmit(this.handleFormSubmit)}>
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="name">
                                             Imię i nazwisko *</label>
-                                        <input type="text" className="form-control" id="name" placeholder="" required="required" />
+                                        <Field component='input' name="name" type="text" className="form-control" id="name" value={this.state.name}
+                                               placeholder="Wpisz Imię i Nazwisko" required="required" onChange={this.handleInputChange}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="email">
@@ -67,20 +121,32 @@ class Contact extends Component {
                                                     <span className="input-group-addon">
                                                         <span className="fa fa-envelope"></span>
                                                     </span>
-                                            <input type="email" className="form-control" id="email" placeholder="" required="required" />
+                                            <Field component='input' name="email" type="email" className="form-control" id="email" value={this.state.email}
+                                                   placeholder="Wpisz E-mail" required="required" onChange={this.handleInputChange}/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="tel">
+                                            Telefon *</label>
+                                        <div className="input-group">
+                                                    <span className="input-group-addon">
+                                                        <span className="fa fa-phone"></span>
+                                                    </span>
+                                            <Field component='input' name="tel" type="tel" className="form-control" id="tel" placeholder="Wpisz Telefon"
+                                                   value={this.state.tel} required="required" onChange={this.handleInputChange}/>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <label htmlFor="name">
+                                        <label htmlFor="message">
                                             Wiadomość *</label>
-                                        <textarea name="message" id="message" className="form-control" rows="9" cols="25" required="required"
-                                                  placeholder=""/>
+                                        <Field component={TextArea} name="message" id="message" className="form-control" rows="9" cols="25" required="required"
+                                                  placeholder="" value={this.state.message} onChange={this.handleInputChange}/>
                                     </div>
                                 </div>
                                 <div className="col-md-12">
-                                    <button type="submit" className="btn btn-outline-light col-12 " id="btnContactUs">
+                                    <button type='submit' className="btn btn-outline-light col-12 " id="btnContactUs" >
                                         Wyślij wiadomość
                                     </button>
                                 </div>
@@ -102,8 +168,23 @@ function mapStateToProps(state){
         isLoaded: state.isLoaded.isLoaded,
         searchProperties: state.searchProperties.searchProperties,
         search: state.search.search,
-        rowsCount: state.rowsCount.rowsCount
+        rowsCount: state.rowsCount.rowsCount,
+        sentMessage: state.sentMessage.sentMessage
     }
 }
 
-export default connect(mapStateToProps, actions)(Contact);
+Contact = connect(
+    mapStateToProps,
+    actions
+)(Contact);
+
+export default Contact = reduxForm({
+    form: 'sentMessage',
+    fields:
+        [
+            'name',
+            'tel',
+            'email',
+            'message'
+        ]
+})(Contact);

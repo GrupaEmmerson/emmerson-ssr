@@ -25,12 +25,11 @@ class InfoOfferView extends Component {
     }
 
     renderField(value){
-        console.log(value);
         return(
-            <div key={value.name} className='row col-12 nopadding' style={{color: '#000'}}>
-                <div className="col-6 nopadding">{value.name}:</div>
-                <div className="col-6 nopadding">
-                    <div className="float-right">{value.value}</div>
+            <div key={value.name} className='row col-12 nopadding ' style={{color: '#000', fontSize: 12+'px'}}>
+                <div className="col-5 nopadding">{value.name}:</div>
+                <div className="row align-items-end col-7 nopadding">
+                        <div className='col-12 nopadding text-right'>{value.value+' '+value.format}</div>
                 </div>
             </div>
         );
@@ -45,10 +44,9 @@ class InfoOfferView extends Component {
 
     render() {
         const { offer } = this.props;
-        console.log(offer);
 
         return(
-          <div className='col-12'>
+          <div className='col-12' style={{marginBottom: 50+'px'}}>
               {offer.feature.map((attribute, index) => {
                   /**
                    * Aby działały rzuty nazwa pola musi być taka sama jak pole atrybutu.
@@ -68,7 +66,7 @@ class InfoOfferView extends Component {
                         );
                     else{
                       return(
-                          <div key={index+'main'}>
+                          <div key={index+'main'} style={{marginBottom: 50+'px'}}>
                               <div style={{borderBottom: '1px solid #e3001b', color: '#fff', margin: 0, padding: 0, fontSize: 14+'px', marginTop: 40+'px'}}>
                                   <div key={attribute.name} style={{backgroundColor: '#e3001b', padding: 4+'px'}} className='col-9'>{attribute.name}:</div>
                               </div>

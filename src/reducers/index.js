@@ -10,6 +10,7 @@ import searchDataReducer from './search_data_reducer';
 import rowsCountReducer from './rows_count_reducer';
 import placesChangedReducer from './places_changed_reducer';
 import searchLocationReducer from './search_location_reducer';
+import sentMessageReducer from './sent_message_reducer';
 
 
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   placesChanged: placesChangedReducer,
   search: searchReducer,
   searchData: searchDataReducer,
-  searchLocation: searchLocationReducer
+  searchLocation: searchLocationReducer,
+  sentMessage: sentMessageReducer
 });
 
 export default rootReducer;
