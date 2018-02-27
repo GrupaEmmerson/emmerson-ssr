@@ -84,27 +84,32 @@ const images = [
     {
         link: '/img/slider/MB.jpg',
         name: 'Metro Bielany',
-        sub_name: 'Warszawa-Bielany'
+        sub_name: 'Warszawa-Bielany',
+        url: 'http://www.metrobielany.pl/'
     },
     {
         link: '/img/slider/B10.jpg',
         name: 'Bobrowiecka 10',
-        sub_name: 'Warszawa-Mokotów'
+        sub_name: 'Warszawa-Mokotów',
+        url: 'http://bobrowiecka10.pl/'
     },
     {
         link: '/img/slider/CD.jpg',
         name: 'Cicha Dolina',
-        sub_name: 'Warszawa-Wilanów'
+        sub_name: 'Warszawa-Wilanów',
+        url: 'http://cichadolina.waw.pl/pl/'
     },
     {
         link: '/img/slider/RF.jpg',
         name: 'Riverfront',
-        sub_name: 'Gdańsk'
+        sub_name: 'Gdańsk',
+        url: 'https://riverfront.pl/'
     },
     {
         link: '/img/slider/SR.jpg',
         name: 'Segmenty Radzymin',
-        sub_name: 'Radzymin'
+        sub_name: 'Radzymin',
+        url: 'http://www.segmenty-radzymin.pl/0'
     }
 ];
 
@@ -363,7 +368,7 @@ class MainPage extends Component {
                             <div className='col-12 col-sm-12 col-md-8 col-lg-9 row nopadding'>
                                 {images.map( (e, index) => {
                                     return(
-                                      <div className='col-12 col-sm-12 col-md-6 col-lg-4' style={{padding: 2+'px', margin: 0}} key={index}>
+                                      <div className='col-12 col-sm-12 col-md-6 col-lg-4 cursor-pointer' style={{padding: 2+'px', margin: 0}} key={index} onClick={() => window.location = e.url }>
                                             <div className='offer-text' style={{margin: 'auto', width: 100+'%', height: 100+'%', maxHeight: 200+'px', minHeight: 200+'px', backgroundImage: 'url('+e.link+')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                                                 <span style={{padding: '2px 4px 2px 4px', backgroundColor: 'RGBA(0,0,0,0.5)'}}>{e.name}</span>
                                             </div>

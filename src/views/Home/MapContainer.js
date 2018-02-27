@@ -217,7 +217,7 @@ export const MapWithASearchBox = compose(
                                             </div>
                                             <div style={{float: 'left', marginLeft: 20+'px'}}>
                                                 <b>Miasto</b> {e.city}<br/>
-                                                <b>Nr. Oferty:</b> {e.number}<br/>
+                                                <b>Nr Oferty:</b> {e.number}<br/>
                                                 <b>Rodzaj:</b> {e.item}<br/>
                                                 <b>Cena:</b> {e.price}<br/>
                                                 <b>Cena za m<sup>2</sup>:</b> {e.price_per_m2}<br/>

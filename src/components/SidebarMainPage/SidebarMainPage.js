@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
-import {Badge, Nav, NavItem} from 'reactstrap';
+import {Badge, Nav, NavItem, NavLink as Link} from 'reactstrap';
 import classNames from 'classnames';
 import nav from './_nav'
 
@@ -54,9 +53,9 @@ class Sidebar extends Component {
             const classes = classNames( "nav-link", item.class);
             return (
                 <NavItem key={key}>
-                    <NavLink to={item.url} className={ classes } activeClassName="active">
+                    <Link href={item.url} className={ classes } >
                         <i className={item.icon}></i>{item.name}{badge(item.badge)}
-                    </NavLink>
+                    </Link>
                 </NavItem>
             )
         };
@@ -86,7 +85,7 @@ class Sidebar extends Component {
 
         // sidebar-nav root
         return (
-            <div className="sidebar" >
+            <div className="sidebar" style={{maxWidth: 100+'vw'}}>
                 <nav className="sidebar-nav">
                     <Nav>
                         {navList(nav.items)}

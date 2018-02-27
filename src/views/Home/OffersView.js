@@ -81,7 +81,7 @@ class OffersView extends Component {
                                                     <h4>Na <b>{e.for_rent !== true ? 'Sprzedaż' : 'Wynajem' }</b></h4>
                                                 </div>
                                                 <div className='col-md-6 col-sm-6 col-6'>
-                                                    Nr. Oferty: <b>{e.number}</b><br/>
+                                                    Nr Oferty: <b>{e.number}</b><br/>
                                                     Cena: <b><NumberFormat value={parseFloat(e.price)} displayType={'text'} thousandSeparator={' '} decimalSeparator={','} decimalScale={2} fixedDecimalScale={true}/> zł</b><br/>
                                                 </div>
                                                 <div className='col-md-6 col-sm-6 col-6'>

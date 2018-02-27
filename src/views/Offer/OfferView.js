@@ -131,17 +131,21 @@ class OfferView extends Component {
                                 </div>
 
                                 <div className="col-12 row nopadding">
-                                    <FacebookButton url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-facebook col-12 col-sm-6 col-md-6 col-lg-3 fb-share-button" style={{marginTop: 10+'px'}}>
+                                    <FacebookButton url={this.state.link} appId={this.state.appId} media={this.state.picture}
+                                                    className="btn btn-lg btn-facebook col-12 col-sm-6 col-md-6 col-lg-3 fb-share-button" style={{marginTop: 10+'px'}}>
                                         <span> Facebook</span>
                                     </FacebookButton>
-                                    <GooglePlusButton url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-google-plus col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}>
+                                    <GooglePlusButton url={this.state.link} appId={this.state.appId} media={this.state.picture}
+                                                      className="btn btn-lg btn-google-plus col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}>
                                         <span> Google+</span>
                                     </GooglePlusButton>
-                                    <TwitterButton url={this.state.link} appId={this.state.appId} media={this.state.picture} className="btn btn-lg btn-twitter col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}>
+                                    <TwitterButton url={this.state.link} appId={this.state.appId} media={this.state.picture}
+                                                   className="btn btn-lg btn-twitter col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}>
                                         <span> Twitter</span>
                                     </TwitterButton>
                                     <button className="btn btn-lg btn-pinterest text col-12 col-sm-6 col-md-6 col-lg-3" style={{marginTop: 10+'px'}}
-                                    onClick={()=>window.location = 'http://program.emmerson.pl/Administracja/admSzablonyDokument.aspx?IdSzablon=491&Obiekt=virgoLib.Oferta&idek='+this.state.offer.id+'&typ=pdf'}>
+                                    onClick={()=>window.location = 'http://program.emmerson.pl/Administracja/admSzablonyDokument.aspx?' +
+                                        'IdSzablon=491&Obiekt=virgoLib.Oferta&idek='+this.state.offer.id+'&typ=pdf'}>
                                         <i className="fa fa-file-pdf-o"></i>&nbsp;Zapisz do PDF</button>
                                 </div>
 
