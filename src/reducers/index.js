@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   searchData: searchDataReducer,
   searchLocation: searchLocationReducer,
-  sentMessage: sentMessageReducer
+  responseMessage: sentMessageReducer
 });
 
 export default rootReducer;

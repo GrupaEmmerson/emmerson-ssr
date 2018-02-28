@@ -5,7 +5,7 @@ class Footer extends Component {
     return (
       <footer className="app-footer">
         <a style={{color: '#fff'}} href="https://emmerson.pl">Emmerson</a> &copy; 2017
-        <span className="float-right">Create by <a style={{color: '#fff'}} href="http://draftway.pl">Draftway Sp. z o.o.</a></span>
+        <span className="float-right">Created by <a style={{color: '#fff'}} href="http://draftway.pl">Draftway Sp. z o.o.</a></span>
       </footer>
     )
   }

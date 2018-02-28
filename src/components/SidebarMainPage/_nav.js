@@ -22,7 +22,7 @@ export default {
                 },
                 {
                     name: 'Obsługa inwestycji',
-                    url: 'https://emmerson.pl/pl/article/46/oferta-dla-inwestorow',
+                    url: 'https://info.emmerson.pl/pl/article/46/oferta-dla-inwestorow',
                     icon: 'fa fa-comments',
                 },
                 {
@@ -37,7 +37,7 @@ export default {
                 },
                 {
                     name: 'Marketing i reklama',
-                    url: 'https://emmerson.pl/pl/article/171/marketing-i-reklama',
+                    url: 'https://info.emmerson.pl/pl/article/171/marketing-i-reklama',
                     icon: 'fa fa-video-camera',
                 },
                 {
@@ -54,27 +54,27 @@ export default {
             children: [
                 {
                     name: 'Misja',
-                    url: 'https://emmerson.pl/pl/article/51/misja-firmy',
+                    url: 'https://info.emmerson.pl/pl/article/51/misja-firmy',
                     icon: 'fa-info-circle',
                 },
                 {
                     name: 'Historia',
-                    url: 'https://emmerson.pl/pl/article/52/historia-firmy',
+                    url: 'https://info.emmerson.pl/pl/article/52/historia-firmy',
                     icon: 'fa fa-history',
                 },
                 {
                     name: 'Praca',
-                    url: 'https://emmerson.pl/pl/article/100/pracuj-z-nami',
+                    url: 'https://info.emmerson.pl/pl/article/100/pracuj-z-nami',
                     icon: 'fa fa-shield',
                 },
                 {
                     name: 'System franczyzowy',
-                    url: 'https://emmerson.pl/pl/article/54/system-franczyzowy',
+                    url: 'https://info.emmerson.pl/pl/article/54/system-franczyzowy',
                     icon: 'fa fa-institution',
                 },
                 {
                     name: 'Nasi partnerzy',
-                    url: 'https://emmerson.pl/pl/article/53/partnerzy',
+                    url: 'https://info.emmerson.pl/pl/article/53/partnerzy',
                     icon: 'fa fa-handshake-o',
                 }
             ]
@@ -85,23 +85,23 @@ export default {
             children: [
                 {
                     name: 'Profil spółki',
-                    url: 'https://emmerson.pl/pl/article/62/profil-spolki',
+                    url: 'https://info.emmerson.pl/pl/article/62/profil-spolki',
                 },
                 {
                     name: 'Walne zgromadzenia',
-                    url: 'https://emmerson.pl/pl/article/73/walne-zgromadzenia',
+                    url: 'https://info.emmerson.pl/pl/article/73/walne-zgromadzenia',
                 },
                 {
                     name: 'Akcjonariat',
-                    url: 'https://emmerson.pl/pl/article/80/akcjonariat',
+                    url: 'https://info.emmerson.pl/pl/article/80/akcjonariat',
                 },
                 {
                     name: 'Wyniki finansowe',
-                    url: 'https://emmerson.pl/pl/article/158/wyniki-finansowe',
+                    url: 'https://info.emmerson.pl/pl/article/158/wyniki-finansowe',
                 },
                 {
                     name: 'Kalendarium',
-                    url: 'https://emmerson.pl/pl/article/85/kalendarium',
+                    url: 'https://info.emmerson.pl/pl/article/85/kalendarium',
                 },
                 {
                     name: 'Raporty',
@@ -109,19 +109,19 @@ export default {
                     children: [
                         {
                             name: 'Informacje poufne',
-                            url: 'https://emmerson.pl/pl/article/253/informacje-poufne',
+                            url: 'https://info.emmerson.pl/pl/article/253/informacje-poufne',
                         },
                         {
                             name: 'Raporty okresowe',
-                            url: 'https://emmerson.pl/pl/article/167/raporty-okresowe',
+                            url: 'https://info.emmerson.pl/pl/article/167/raporty-okresowe',
                         },
                         {
                             name: 'ESPI',
-                            url: 'https://emmerson.pl/pl/article/252/espi',
+                            url: 'https://info.emmerson.pl/pl/article/252/espi',
                         },
                         {
                             name: 'EBI',
-                            url: 'https://emmerson.pl/pl/article/251/ebi',
+                            url: 'https://info.emmerson.pl/pl/article/251/ebi',
                         }
                     ]
                 }
@@ -134,12 +134,12 @@ export default {
             children: [
                 {
                     name: 'Nasze biura',
-                    url: 'https://emmerson.pl/pl/departments',
+                    url: 'https://info.emmerson.pl/pl/departments',
                     icon: 'fa fa-map',
                 },
                 {
                     name: 'Napisz do nas',
-                    url: 'https://emmerson.pl/pl/contact',
+                    url: 'https://info.emmerson.pl/pl/contact',
                     icon: 'fa fa-phone',
                 }
             ]

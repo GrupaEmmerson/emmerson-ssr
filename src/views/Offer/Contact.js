@@ -16,7 +16,8 @@ class Contact extends Component {
             message: 'Jestem zainteresowany ofertą nr ... opublikowaną na stronie www.emmerson.pl. Proszę o kontakt.',
             tel: null,
             email: null,
-            name: null
+            name: null,
+            adviserId: null
         };
 
     }
@@ -48,7 +49,8 @@ class Contact extends Component {
             tel: this.state.tel,
             email: this.state.email,
             name: this.state.name,
-            message: this.state.message
+            message: this.state.message,
+            adviserId: this.state.adviserId
         });
 
         this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
@@ -71,12 +73,17 @@ class Contact extends Component {
             adviser,
             handleSubmit
         } = this.props;
+        if(!this.state.adviserId){
+            this.setState({
+                adviserId: adviser.id
+            })
+        }
         const TextArea = ({input:{ checked, onChange, name, value}, className, placeholder, id, label, type, children}) => (
 
             <textarea name={name} id={id} type='textarea' className="form-control" rows="9" cols="25" required="required"
                placeholder="" value={value ? value :  this.state.message } onChange={onChange}/>
         );
-
+        console.log(this.props.responseMessage);
         return (
             <div className="container-fluid nopadding" >
                 <div className="row nopadding">
@@ -169,7 +176,7 @@ function mapStateToProps(state){
         searchProperties: state.searchProperties.searchProperties,
         search: state.search.search,
         rowsCount: state.rowsCount.rowsCount,
-        sentMessage: state.sentMessage.sentMessage
+        responseMessage: state.responseMessage.responseMessage
     }
 }
 
@@ -185,6 +192,7 @@ export default Contact = reduxForm({
             'name',
             'tel',
             'email',
-            'message'
+            'message',
+            'adviserId'
         ]
 })(Contact);

@@ -6,25 +6,6 @@ const reactApp = require("./react-app");
 const PORT = 80;
 const app = express();
 
-const url = require('url');
-const querystring = require('querystring');
-
-let rawUrl = 'localhost:3004/#/offer/:id';
-
-let parsedUrl = url.parse(rawUrl);
-let parsedQs = querystring.parse(parsedUrl.query);
-
-// const apiUrl = `http://api-www.emmerson.pl/offer/`;
-//
-// const url = [apiUrl + this.props.match.params.id].join("");
-//
-// fetch(url)
-//     .then(res => res.json())
-//     .then(response => {
-//       meta = response;
-//     });
-console.log(parsedQs);
-
 app.use(reactApp);
 app.use(serveStatic(path.join(__dirname, "../build")));
 

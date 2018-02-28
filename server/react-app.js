@@ -6,8 +6,36 @@ const React = require("react");
 const ReactApp = require("../build/static/ssr/main").default;
 const fetch = require("node-fetch");
 const decode = require('decode-html');
+const url = require('url');
 
 const apiUrl = `http://api-www.emmerson.pl/offer/`;
+
+router.get("/pl/offer/:id", (req, res) => {
+    console.log(req, res);
+    res.redirect(url.format({
+        pathname:"/offer/"+req.params.id,
+        params: req.params,
+        query:req.query,
+    }));
+});
+
+router.get("/en/offer/:id", (req, res) => {
+    console.log(req, res);
+    res.redirect(url.format({
+        pathname:"/offer/"+req.params.id,
+        params: req.params,
+        query:req.query,
+    }));
+});
+
+router.get("/ru/offer/:id", (req, res) => {
+    console.log(req, res);
+    res.redirect(url.format({
+        pathname:"/offer/"+req.params.id,
+        params: req.params,
+        query:req.query,
+    }));
+});
 
 router.get("/offer/:id", (req, res) => {
     const url = [apiUrl + req.params.id + '/meta'].join("");
@@ -75,7 +103,6 @@ router.get("/search", (req, res) => {
         });
     }, 1000);
 });
-
 
 router.get("/", (req, res) => {
     let meta = '';
