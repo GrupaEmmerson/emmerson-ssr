@@ -44,7 +44,6 @@ class Contact extends Component {
     }
 
     handleFormSubmit(event) {
-        console.log(event);
         this.props.sentMessage({
             tel: this.state.tel,
             email: this.state.email,
@@ -83,7 +82,6 @@ class Contact extends Component {
             <textarea name={name} id={id} type='textarea' className="form-control" rows="9" cols="25" required="required"
                placeholder="" value={value ? value :  this.state.message } onChange={onChange}/>
         );
-        console.log(this.props.responseMessage);
         return (
             <div className="container-fluid nopadding" >
                 <div className="row nopadding">

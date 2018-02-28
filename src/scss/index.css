@@ -8989,6 +8989,9 @@ a:hover {
 .cursor-ew-resize {
   cursor: ew-resize; }
 
+.cursor-pointer {
+  cursor: pointer; }
+
 .app-header {
   font-family: BebasNeue Regular, sans-serif, FontAwesome !important;
   font-size: 20px !important;
@@ -8997,7 +9000,16 @@ a:hover {
 .app-header.navbar .nav-item .nav-link, .app-header.navbar .nav-item .dropdown-toggle, .app-header.navbar .nav-item .dropdown-toggle {
   font-family: BebasNeue Regular, sans-serif, FontAwesome !important;
   font-size: 20px !important;
-  font-weight: 300; }
+  font-weight: 300 !important; }
+
+.dropdown-header {
+  font-family: BebasNeue Regular, sans-serif, FontAwesome !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  color: #000 !important; }
+
+.header-fixed .app-header {
+  max-width: 100vw; }
 
 @font-face {
   font-family: BebasNeue Regular;

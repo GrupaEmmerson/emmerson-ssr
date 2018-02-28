@@ -64,8 +64,6 @@ export function setSearchData(data) {
 
 export function sentMessage(data) {
 
-    console.log(data);
-
     return function(dispatch){
         axios({method: 'post', url: API_DIR+API_PORT+`/offer/contact`, data: JSON.stringify(data) })
             .then(response => {

@@ -119,8 +119,26 @@ class Sidebar extends Component {
 
     handleInputChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
+        if(target.type !== 'checkbox' && target.value === ''){
+            switch (target.name){
+                case 'priceFrom':
+                    value = 0;
+                    break;
+                case 'priceTo':
+                    value = 999999999;
+                    break;
+                case 'priceM2From':
+                    value = 0;
+                    break;
+                case 'priceM2To':
+                    value = 999999999;
+                    break;
+                default:
+                    value = false;
+            }
+        }
         const searchData = this.props.searchData ? this.props.searchData : [];
         searchData[name] = value;
         this.props.setSearchData(
@@ -154,17 +172,19 @@ class Sidebar extends Component {
     }
 
     render() {
-        console.log();
         const formData = this.props.searchData;
-
-        if(this.state.priceFrom === '' || this.state.priceFrom === null || this.state.priceFrom === undefined)
+        if(this.state.priceFrom === '' || this.state.priceFrom === null || this.state.priceFrom === undefined){
             formData['priceFrom'] = 0;
-        if(this.state.priceTo === '' || this.state.priceTo === null || this.state.priceTo === undefined)
+        }
+        if(this.state.priceTo === '' || this.state.priceTo === null || this.state.priceTo === undefined){
             formData['priceTo'] = 999999999;
-        if(this.state.priceM2From === '' || this.state.priceM2From === null || this.state.priceM2From === undefined)
+        }
+        if(this.state.priceM2From === '' || this.state.priceM2From === null || this.state.priceM2From === undefined){
             formData['priceM2From'] = 0;
-        if(this.state.priceM2To === '' || this.state.priceM2To === null || this.state.priceM2To === undefined)
+        }
+        if(this.state.priceM2To === '' || this.state.priceM2To === null || this.state.priceM2To === undefined){
             formData['priceM2To'] = 999999999;
+        }
 
         const checkInput = ({input:{ checked, onChange, name, value}, className, placeholder, id, label, type, children}) => (
             <label className="form-check-label col-sm-12 col-12">
