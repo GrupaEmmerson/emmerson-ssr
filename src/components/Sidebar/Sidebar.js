@@ -78,7 +78,7 @@ class Sidebar extends Component {
         }
     }
     checkValid(){
-        if( !(this.state.primaryMarket || this.state.secondaryMarket || this.state.commercialMarket ))
+        if( !(this.state.primaryMarket || this.state.secondaryMarket ))
         {
             this.setState({noValid: true});
             return true;
@@ -141,6 +141,9 @@ class Sidebar extends Component {
         }
         const searchData = this.props.searchData ? this.props.searchData : [];
         searchData[name] = value;
+        this.setState({
+            [name]: value
+        });
         this.props.setSearchData(
             searchData
         );
@@ -150,6 +153,7 @@ class Sidebar extends Component {
     }
 
     renderAlert(noValid){
+        console.log(noValid);
         if(noValid){
             return(
                 <div className="col-md-12 col-sm-12 col-12" style={{
@@ -173,18 +177,6 @@ class Sidebar extends Component {
 
     render() {
         const formData = this.props.searchData;
-        if(this.state.priceFrom === '' || this.state.priceFrom === null || this.state.priceFrom === undefined){
-            formData['priceFrom'] = 0;
-        }
-        if(this.state.priceTo === '' || this.state.priceTo === null || this.state.priceTo === undefined){
-            formData['priceTo'] = 999999999;
-        }
-        if(this.state.priceM2From === '' || this.state.priceM2From === null || this.state.priceM2From === undefined){
-            formData['priceM2From'] = 0;
-        }
-        if(this.state.priceM2To === '' || this.state.priceM2To === null || this.state.priceM2To === undefined){
-            formData['priceM2To'] = 999999999;
-        }
 
         const checkInput = ({input:{ checked, onChange, name, value}, className, placeholder, id, label, type, children}) => (
             <label className="form-check-label col-sm-12 col-12">
