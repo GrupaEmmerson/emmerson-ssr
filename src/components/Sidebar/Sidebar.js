@@ -153,7 +153,6 @@ class Sidebar extends Component {
     }
 
     renderAlert(noValid){
-        console.log(noValid);
         if(noValid){
             return(
                 <div className="col-md-12 col-sm-12 col-12" style={{
