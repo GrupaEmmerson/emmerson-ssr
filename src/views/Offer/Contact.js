@@ -17,7 +17,7 @@ class Contact extends Component {
             tel: null,
             email: null,
             name: null,
-            adviserId: null
+            offerId: null
         };
 
     }
@@ -49,7 +49,7 @@ class Contact extends Component {
             email: this.state.email,
             name: this.state.name,
             message: this.state.message,
-            adviserId: this.state.adviserId
+            offerId: this.state.offerId
         });
 
         this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
@@ -72,10 +72,12 @@ class Contact extends Component {
             adviser,
             handleSubmit
         } = this.props;
-        if(!this.state.adviserId){
-            this.setState({
-                adviserId: adviser.id
-            })
+        if(!this.state.offerId ){
+            if(this.state.offer !== undefined){
+                this.setState({
+                    offerId: this.state.offer.id
+                })
+            }
         }
         const TextArea = ({input:{ checked, onChange, name, value}, className, placeholder, id, label, type, children}) => (
 

@@ -12,6 +12,7 @@ import * as actions from '../../actions';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Input } from "reactstrap";
+import {GOOGLE_API_KEY} from "../../config/parameters";
 
 const { compose, withProps, lifecycle} = require("recompose");
 const _ = require("lodash");
@@ -26,7 +27,7 @@ const mapStateToProps = state => ({
 
 export const MapWithASearchBox = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBA9X1FA_bOugQ9pK8uoO9dK7WXHM_-zE8&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_API_KEY+"&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }}/>,
         containerElement: <div style={{ height: `100%`}}/>,
         mapElement: <div style={{ height: `100%` }}/>,
