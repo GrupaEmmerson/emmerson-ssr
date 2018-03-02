@@ -94,6 +94,12 @@ export function setRowsCount(data) {
     }
 }
 
+export function setResponseMessage(data) {
+    return function (dispatch) {
+        dispatch({type: GET_SENT_MESSAGE, payload: data});
+    }
+}
+
 export function setCheckConfirmed(data) {
     return function (dispatch) {
         dispatch({type: CHECK_CONFIRMED, payload: data});

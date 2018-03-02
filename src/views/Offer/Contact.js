@@ -43,13 +43,9 @@ class Contact extends Component {
                 this.setState({offer: response});
                 this.setState({message: 'Jestem zainteresowany ofertą nr '+this.state.offer.number+' opublikowaną na stronie www.emmerson.pl. Proszę o kontakt. '})
             });
-        this.props.sentMessage({
-            message: 'Jestem zainteresowany ofertą nr ... opublikowaną na stronie www.emmerson.pl. Proszę o kontakt.',
-            tel: null,
-            email: null,
-            name: null,
-            offerId: null
-        })
+
+        this.props.setResponseMessage(false);
+
     }
 
     componentWillUpdate(state){
@@ -62,13 +58,13 @@ class Contact extends Component {
             this.props.setResetForm(false);
         }
 
-        if(this.props.sentMessage === 201 && state.sentCheck ){
+        if(state.responseMessage === 201 && state.sentCheck ){
             this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
             this.props.dispatch(changeFieldValue("sentMessage", "email", null));
             this.props.dispatch(changeFieldValue("sentMessage", "name", null));
-            this.props.setSentConfirmed(false)
+            this.props.setSentConfirmed(false);
+            this.props.setResponseMessage(false);
         }
-        console.log(state.resetForm);
     }
 
     handleFormSubmit(event) {
@@ -213,7 +209,7 @@ function mapStateToProps(state){
         sentCheck: state.sentCheck.sentCheck,
         checkConfirmed: state.checkConfirmed.checkConfirmed,
         messageField: state.messageField.messageField,
-        resetForm: state.resetForm.resetForm,
+        resetForm: state.resetForm.resetForm
     }
 }
 
