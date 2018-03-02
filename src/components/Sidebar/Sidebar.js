@@ -209,7 +209,7 @@ class Sidebar extends Component {
                                 </div>
                             </div>
                             <Form>
-                                <legend className="col-form-legend col-sm-12 col-12 hidden-md-up"><h5>Cenna:</h5></legend>
+                                <legend className="col-form-legend col-sm-12 col-12 hidden-md-up"><h5>Cena:</h5></legend>
                                 <div className="col-md-12 col-12">
                                     <div className="row">
                                         <div className="col-md-6 col-sm-6 col-6">

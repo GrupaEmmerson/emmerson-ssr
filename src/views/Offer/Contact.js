@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { reduxForm, Field, change as changeFieldValue} from 'redux-form';
 import * as actions from '../../actions';
-import {API_DIR, API_PORT, DIR_URL} from "../../config/parameters";
+import {API_DIR, API_PORT } from "../../config/parameters";
 
 let testWeakMap = new WeakMap();
 
@@ -17,6 +17,8 @@ class Contact extends Component {
             tel: null,
             email: null,
             name: null,
+            check_one: false,
+            check_two: false,
             offerId: null
         };
 
@@ -41,20 +43,39 @@ class Contact extends Component {
                 this.setState({offer: response});
                 this.setState({message: 'Jestem zainteresowany ofertą nr '+this.state.offer.number+' opublikowaną na stronie www.emmerson.pl. Proszę o kontakt. '})
             });
+        this.props.sentMessage({
+            message: 'Jestem zainteresowany ofertą nr ... opublikowaną na stronie www.emmerson.pl. Proszę o kontakt.',
+            tel: null,
+            email: null,
+            name: null,
+            offerId: null
+        })
+    }
+
+    componentWillUpdate(state){
+
+        if(state.resetForm){
+            this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
+            this.props.dispatch(changeFieldValue("sentMessage", "email", null));
+            this.props.dispatch(changeFieldValue("sentMessage", "name", null));
+
+            this.props.setResetForm(false);
+        }
+
+        if(this.props.sentMessage === 201 && state.sentCheck ){
+            this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
+            this.props.dispatch(changeFieldValue("sentMessage", "email", null));
+            this.props.dispatch(changeFieldValue("sentMessage", "name", null));
+            this.props.setSentConfirmed(false)
+        }
+        console.log(state.resetForm);
     }
 
     handleFormSubmit(event) {
-        this.props.sentMessage({
-            tel: this.state.tel,
-            email: this.state.email,
-            name: this.state.name,
-            message: this.state.message,
-            offerId: this.state.offerId
-        });
+        if(!this.props.sentCheck){
+            return this.props.setSentConfirmed(true);
+        }
 
-        this.props.dispatch(changeFieldValue("sentMessage", "tel", null));
-        this.props.dispatch(changeFieldValue("sentMessage", "email", null));
-        this.props.dispatch(changeFieldValue("sentMessage", "name", null));
     }
 
     handleInputChange(event) {
@@ -62,10 +83,18 @@ class Contact extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
+        const messageField = this.props.messageField ? this.props.messageField.messageField : {};
+        messageField[name] = value;
+        messageField['offerId'] = this.state.offer.id;
+
         this.setState({
             [name]: value
         });
+        this.props.setMessageField({
+            messageField
+        });
     }
+
 
     render() {
         const {
@@ -84,8 +113,11 @@ class Contact extends Component {
             <textarea name={name} id={id} type='textarea' className="form-control" rows="9" cols="25" required="required"
                placeholder="" value={value ? value :  this.state.message } onChange={onChange}/>
         );
+
+
         return (
             <div className="container-fluid nopadding" >
+
                 <div className="row nopadding">
                     <div className="col-12 nopadding">
                         <form>
@@ -152,6 +184,7 @@ class Contact extends Component {
                                                   placeholder="" value={this.state.message} onChange={this.handleInputChange}/>
                                     </div>
                                 </div>
+
                                 <div className="col-md-12">
                                     <button type='submit' className="btn btn-outline-light col-12 " id="btnContactUs" >
                                         Wyślij wiadomość
@@ -176,7 +209,11 @@ function mapStateToProps(state){
         searchProperties: state.searchProperties.searchProperties,
         search: state.search.search,
         rowsCount: state.rowsCount.rowsCount,
-        responseMessage: state.responseMessage.responseMessage
+        responseMessage: state.responseMessage.responseMessage,
+        sentCheck: state.sentCheck.sentCheck,
+        checkConfirmed: state.checkConfirmed.checkConfirmed,
+        messageField: state.messageField.messageField,
+        resetForm: state.resetForm.resetForm,
     }
 }
 
@@ -193,6 +230,6 @@ export default Contact = reduxForm({
             'tel',
             'email',
             'message',
-            'adviserId'
+            'offerId'
         ]
 })(Contact);

@@ -1,6 +1,7 @@
 import {
     GET_LOCATION, GET_VIEWPORT, GET_OFFERS, IS_LOADED, GET_PROPERTIES, GET_SEARCH, GET_ROWS_COUNT,
-    GET_PLACES_CHANGED, GET_SEARCH_DATA, GET_SEARCH_LOCATION, GET_SENT_MESSAGE
+    GET_PLACES_CHANGED, GET_SEARCH_DATA, GET_SEARCH_LOCATION, GET_SENT_MESSAGE, CHECK_CONFIRMED, SENT_CHECK,
+    MESSAGE_FIELD, MESSAGE_RESET
 } from './types';
 import axios from 'axios';
 import {API_DIR, API_PORT} from "../config/parameters";
@@ -90,5 +91,29 @@ export function setSearchLocation(data) {
 export function setRowsCount(data) {
     return function (dispatch) {
         dispatch({type: GET_ROWS_COUNT, payload: data});
+    }
+}
+
+export function setCheckConfirmed(data) {
+    return function (dispatch) {
+        dispatch({type: CHECK_CONFIRMED, payload: data});
+    }
+}
+
+export function setSentConfirmed(data) {
+    return function (dispatch) {
+        dispatch({type: SENT_CHECK, payload: data});
+    }
+}
+
+export function setMessageField(data) {
+    return function (dispatch) {
+        dispatch({type: MESSAGE_FIELD, payload: data});
+    }
+}
+
+export function setResetForm(data) {
+    return function (dispatch) {
+        dispatch({type: MESSAGE_RESET, payload: data});
     }
 }

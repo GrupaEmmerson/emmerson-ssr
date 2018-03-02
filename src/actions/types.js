@@ -9,3 +9,7 @@ export const GET_SEARCH_DATA = 'get_search_data';
 export const GET_ROWS_COUNT = 'get_rows_count';
 export const GET_PLACES_CHANGED = 'get_places_changed';
 export const GET_SENT_MESSAGE = 'get_sent_message';
+export const CHECK_CONFIRMED = 'check_confirmed';
+export const SENT_CHECK = 'sent_check';
+export const MESSAGE_FIELD = 'message_field';
+export const MESSAGE_RESET = 'reset_form';

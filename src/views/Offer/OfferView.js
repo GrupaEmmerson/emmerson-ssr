@@ -24,9 +24,13 @@ class OfferView extends Component {
             caption : 'Emmerson Realty S.A',
             description :  '-',
             redirect_uri : DIR_URL+'/offer/' + this.props.match.params.id,
-            appId: 1537301123055501
+            appId: 1537301123055501,
+            noConfirmed: false,
+            noValid: false,
+            check_one: false,
+            check_two: false,
         };
-
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     get state() {
@@ -71,6 +75,106 @@ class OfferView extends Component {
         }(document, 'script', 'facebook-jssdk'));
     }
 
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        console.log(event);
+
+        this.setState({
+            [name]: value
+        });
+    }
+    checkNoValidForm(){
+        this.props.setCheckConfirmed(false);
+        this.props.setSentConfirmed(false);
+        this.props.setResetForm(true);
+        this.setState({
+            noConfirmed: false,
+            noValid: false,
+            check_one: false,
+            check_two: false
+        });
+    }
+    checkValidForm(){
+        if(this.state.check_one && this.state.check_two){
+            console.log(this.props.messageField.messageField);
+            this.props.sentMessage(this.props.messageField.messageField);
+            this.props.setCheckConfirmed(true);
+        }
+        else{
+            this.setState({noValid: true});
+        }
+    }
+
+    renderAlert(noValid){
+        if(noValid){
+            return(
+                <div>
+                    Wszystkie zgody muszą być wyrażone.
+                </div>
+            )
+        }
+    }
+
+    renderPopUpValid(){
+        if(!this.props.sentCheck)
+            return;
+        if(this.props.checkConfirmed)
+            return;
+
+        return(
+            <div style={{position: 'fixed',  margin: 'auto', padding: 20+'px', top: 20+'vh',backgroundColor: 'RGBA(0,0,0,0.9)', zIndex: 9999, color: '#fff'}} className='col-12 col-sm-12 col-md-6'>
+                {
+                    this.renderAlert(this.state.noValid)
+                }
+                <div className="col-md-12">
+                    <label htmlFor="check_one" className='form-check-label'>
+                        Wyrażam zgodę. *</label>
+                    <input type="checkbox" name="check_one" id="check_one" required="required"
+                           placeholder="" value={this.state.check_one} onChange={this.handleInputChange}
+                           style={{float: 'left'}}
+                    />
+                    <br/>
+                    <span style={{fontSize: 9+'px'}}>{'Zgodnie z ustawą z dnia 29 sierpnia 1997 r. o ochronie danych osobowych ' +
+                    '(Dz.U. Nr 133, poz 883) wypełniając ten formularz wyrażasz zgodę na przetwarzanie ' +
+                    'Twoich danych osobowych i w wykorzystywanie ich tylko do wewnętrznych celów statystycznych ' +
+                    'i marketingowych. Jednocześnie masz prawo wglądu do swoich danych,ich poprawienia i ' +
+                    'usunięcia. Administratorem danych osobowych jest Emmerson Realty S.A., ul. ' +
+                    'Stawki 40, 01-040 Warszawa.'}</span>
+                </div>
+                <div className="col-md-12">
+                    <div className="form-group">
+                        <label htmlFor="check_two" className='form-check-label'>
+                            Wyrażam zgodę. *</label>
+                        <input type="checkbox" name="check_two" id="check_two" rows="9" cols="25" required="required"
+                               placeholder="" value={this.state.check_two} onChange={this.handleInputChange}
+                               style={{float: 'left'}}
+                        />
+                        <br/>
+                        <span style={{fontSize: 9+'px'}}>{'Zgodnie z ustawą z dnia 26.08.2002 r. o świadczeniu usług ' +
+                        'drogą elektroniczną obowiązującą od 10 marca 2003, wyrażam zgodę na ' +
+                        'otrzymywanie informacji handlowej drogą elektroniczną.'}</span>
+                    </div>
+                </div>
+                <div className="row">
+
+                    <div className="col-md-6">
+                        <button className="btn btn-outline-light col-12 " id="btnConfirmed" onClick={()=>this.checkValidForm()}>
+                            Potwierdzam
+                        </button>
+                    </div>
+
+                    <div className="col-md-6">
+                        <button className="btn btn-outline-light col-12 " id="btnConfirmed" onClick={()=>this.checkNoValidForm()}>
+                            Rezygnuję
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        );
+    }
 
     render() {
 
@@ -82,7 +186,14 @@ class OfferView extends Component {
                 </div>
             )
         }
+
         return (
+            <div>
+                <div className='row justify-content-center nopadding' style={{width: 100+'%'}}>
+                    {
+                        this.renderPopUpValid(this.props.checkConfirmed)
+                    }
+                </div>
             <div className="container">
 
                 <div className='row'>
@@ -99,7 +210,7 @@ class OfferView extends Component {
                         </div>
 
                         <div className='contact contact-background' style={{padding: '20px 20px', margin: 0, height: 'auto'}}>
-                            <Contact adviser={this.state.offer.adviser} {...this.props}/>
+                            <Contact adviser={this.state.offer.adviser} {...this.props} checkedConfirme={this.state.noConfirmed}/>
                         </div>
 
                         <div className='offer-box col-12 col-sm-12 col-md-12 col-lg-12 row nopadding' style={{marginTop: 50+'px'}} >
@@ -161,6 +272,7 @@ class OfferView extends Component {
                     </div>
                 </div>
             </div>
+            </div>
         )
     }
 
@@ -174,8 +286,17 @@ function mapStateToProps(state){
         isLoaded: state.isLoaded.isLoaded,
         searchProperties: state.searchProperties.searchProperties,
         search: state.search.search,
-        rowsCount: state.rowsCount.rowsCount
+        rowsCount: state.rowsCount.rowsCount,
+        sentCheck: state.sentCheck.sentCheck,
+        checkConfirmed: state.checkConfirmed.checkConfirmed,
+        messageField: state.messageField.messageField,
     }
 }
 
-export default connect(mapStateToProps, actions)(OfferView);
+
+OfferView = connect(
+    mapStateToProps,
+    actions
+)(OfferView);
+
+export default OfferView;

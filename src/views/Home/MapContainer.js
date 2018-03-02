@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 
 export const MapWithASearchBox = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_API_KEY+"&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_API_KEY+"&v=3.31&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }}/>,
         containerElement: <div style={{ height: `100%`}}/>,
         mapElement: <div style={{ height: `100%` }}/>,
@@ -195,7 +195,6 @@ export const MapWithASearchBox = compose(
                 <Marker key={index} position={marker.position} />
             )}
                 {props.tableData ? props.tableData.map((e) => {
-
                     return(
                         <Marker
                             key={e.id}
@@ -222,6 +221,7 @@ export const MapWithASearchBox = compose(
                                                 <b>Rodzaj:</b> {e.item}<br/>
                                                 <b>Cena:</b> {e.price}<br/>
                                                 <b>Cena za m<sup>2</sup>:</b> {e.price_per_m2}<br/>
+                                                <b>Pow. m<sup>2</sup>:</b> {e.surface} &nbsp; <b>Pokoje: </b>{e.number_of_rooms}<br/>
                                             </div>
                                         </div>
                                 </Link>
