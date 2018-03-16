@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {API_DIR, API_PORT} from "../../config/parameters";
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -29,7 +30,9 @@ class Sidebar extends Component {
             commercialUnitType: this.props.searchData ? this.props.searchData['commercialUnitType'] : false,
             officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
             exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
-            zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false
+            zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false,
+            offerNumber: false,
+            noOffer: false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -57,7 +60,8 @@ class Sidebar extends Component {
                 commercialUnitType: this.props.searchData ? this.props.searchData['commercialUnitType'] : false,
                 officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
                 exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
-                zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false
+                zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false,
+                offerNumber: false
             });
             this.props.setSearch({
                 priceFrom: this.props.searchData ? this.props.searchData['priceFrom'] : 0,
@@ -73,7 +77,8 @@ class Sidebar extends Component {
                 commercialUnitType: this.props.searchData ? this.props.searchData['commercialUnitType'] : false,
                 officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
                 exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
-                zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false
+                zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false,
+                offerNumber: false
             });
         }
     }
@@ -108,12 +113,33 @@ class Sidebar extends Component {
         }
         else
         {
-            this.props.setSearch(formData);
-            this.props.setSearchData(formData);
-            this.props.setIsLoaded(false);
-            this.setState({noValid: false});
-            document.body.classList.toggle('sidebar-hidden');
-            document.body.classList.toggle('sidebar-mobile-show');
+            if(!this.state.offerNumber){
+                this.props.setSearch(formData);
+                this.props.setSearchData(formData);
+                this.props.setIsLoaded(false);
+                this.setState({noValid: false});
+                document.body.classList.toggle('sidebar-hidden');
+                document.body.classList.toggle('sidebar-mobile-show');
+            }
+            else{
+                const apiUrl = API_DIR+API_PORT+`/offer/find/` + this.state.offerNumber;
+                const url = [apiUrl].join("");
+                fetch(url)
+                    .then(res => res.json())
+                    .then(response => {
+                        console.log(response);
+                        if(response){
+                            document.body.classList.toggle('sidebar-hidden');
+                            document.body.classList.toggle('sidebar-mobile-show');
+                            this.props.history.push("/offer/"+response);
+                        }
+                        else{
+                            this.setState({
+                                noOffer: true
+                            });
+                        }
+                    });
+            }
         }
     }
 
@@ -167,7 +193,7 @@ class Sidebar extends Component {
                         border: 'solid 1px',
                         padding: 5+'px'
                     }}>
-                        <h4 style={{margin: 'auto', marginTop: 15+'px', marginBottom: 15+'px'}}>Zaznacz rynek i rodzaj nieruchomości</h4>
+                        <h4 style={{margin: 'auto', marginTop: 15+'px', marginBottom: 15+'px'}}>{this.state.noOffer ? 'Nie ma takiej oferty' : 'Zaznacz rynek i rodzaj nieruchomości'}</h4>
                     </div>
                 </div>
             );
@@ -307,8 +333,20 @@ class Sidebar extends Component {
                                             label='&nbsp;Bez prowizji' value={this.state.zeroPercent} checked={this.state.zeroPercent} onChange={this.handleInputChange}/>
 
                                 </div>
+                                <br/>
+                                <div className="col-md-12 col-sm-12 col-12">
+                                    <div className="form-group">
+                                        <label htmlFor='priceFrom'><h5>Numer oferty:</h5></label>
+                                        <Field component='input' type="text" id="offerNumber" placeholder="Wpisz numer oferty"
+                                               name='offerNumber' className="form-control bg-dark search-box search-color-text"
+                                               value={this.state.offerNumber} onChange={this.handleInputChange}/>
+                                    </div>
+                                </div>
                                 {
                                     this.renderAlert(this.state.noValid)
+                                }
+                                {
+                                    this.renderAlert(this.state.noOffer)
                                 }
                                 <div className="col-md-12 col-sm-12 col-12" style={{marginTop: 15 + 'px'}}>
                                     <Button onClick={()=>this.handleFormSubmit(formData)} className='btn btn-lg btn-outline-emmerson col-12'>
