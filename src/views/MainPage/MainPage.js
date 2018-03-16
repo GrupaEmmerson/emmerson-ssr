@@ -65,48 +65,48 @@ const style = {
 };
 
 const promoFlat = [
-    {link: '/img/slider/kafelek_oferta-01.jpg'},
-    {link: '/img/slider/kafelek_oferta-01.jpg'},
-    {link: '/img/slider/kafelek_oferta-01.jpg'},
-    {link: '/img/slider/kafelek_oferta-01.jpg'},
-    {link: '/img/slider/kafelek_oferta-01.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-01.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-01.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-01.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-01.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-01.jpg'},
 ];
 
 const promoHouse = [
-    {link: '/img/slider/kafelek_oferta-06.jpg'},
-    {link: '/img/slider/kafelek_oferta-06.jpg'},
-    {link: '/img/slider/kafelek_oferta-06.jpg'},
-    {link: '/img/slider/kafelek_oferta-06.jpg'},
-    {link: '/img/slider/kafelek_oferta-06.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-06.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-06.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-06.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-06.jpg'},
+    {link: 'https://img-static.emmerson.pl/img/slider/kafelek_oferta-06.jpg'},
 ];
 
 const images = [
     {
-        link: '/img/slider/MB.jpg',
+        link: 'https://img-static.emmerson.pl/img/slider/MB.jpg',
         name: 'Metro Bielany',
         sub_name: 'Warszawa-Bielany',
         url: 'http://www.metrobielany.pl/'
     },
     {
-        link: '/img/slider/B10.jpg',
+        link: 'https://img-static.emmerson.pl/img/slider/B10.jpg',
         name: 'Bobrowiecka 10',
         sub_name: 'Warszawa-Mokotów',
         url: 'http://bobrowiecka10.pl/'
     },
     {
-        link: '/img/slider/CD.jpg',
+        link: 'https://img-static.emmerson.pl/img/slider/CD.jpg',
         name: 'Cicha Dolina',
         sub_name: 'Warszawa-Wilanów',
         url: 'http://cichadolina.waw.pl/pl/'
     },
     {
-        link: '/img/slider/RF.jpg',
+        link: 'https://img-static.emmerson.pl/img/slider/RF.jpg',
         name: 'Riverfront',
         sub_name: 'Gdańsk',
         url: 'https://riverfront.pl/'
     },
     {
-        link: '/img/slider/SR.jpg',
+        link: 'https://img-static.emmerson.pl/img/slider/SR.jpg',
         name: 'Segmenty Radzymin',
         sub_name: 'Radzymin',
         url: 'http://www.segmenty-radzymin.pl/0'
@@ -385,7 +385,7 @@ class MainPage extends Component {
                                 color: '#000',
                                 textAlign: 'center',
                                 padding: 2+'px', margin: 0, paddingBottom: 40+'px'}}>
-                                <img src='/img/home_why_us_01.jpg' style={{width: 100+'%'}}/>
+                                <img src='https://img-static.emmerson.pl/img/home_why_us_01.jpg' style={{width: 100+'%'}}/>
                                 <h3>10 TYSIĘCY OFERT NIERUCHOMOŚCI W CAŁYM KRAJU</h3>
                                 <div className='col-12 text-justify'>
                                     Bogata baza ofert z całego kraju zapewnia komfort wyboru nieruchomości
@@ -401,7 +401,7 @@ class MainPage extends Component {
                                 color: '#000',
                                 textAlign: 'center',
                                 padding: 2+'px', margin: 0, paddingBottom: 40+'px'}}>
-                                <img src='/img/home_why_us_02.jpg' style={{width: 100+'%'}}/>
+                                <img src='https://img-static.emmerson.pl/img/home_why_us_02.jpg' style={{width: 100+'%'}}/>
                                 <h3>POZNAJ LOKALNE RYNKI NIERUCHOMOŚCI W POLSCE</h3>
                                 <div className='col-12 text-justify'>
                                     Zakup nieruchomości warto poprzedzić analizą lokalnego rynku. Możemy uniknąć w ten
@@ -418,7 +418,7 @@ class MainPage extends Component {
                                 color: '#000',
                                 textAlign: 'center',
                                 padding: 2+'px', margin: 0, paddingBottom: 40+'px'}}>
-                                <img src='/img/home_why_us_03.jpg' style={{width: 100+'%'}}/>
+                                <img src='https://img-static.emmerson.pl/img/home_why_us_03.jpg' style={{width: 100+'%'}}/>
                                 <h3>PORÓWNAJ CENY OFERTOWE I TRANSAKCYJNE</h3>
                                 <div className='col-12 text-justify'>
                                     Większość analiz rynku nieruchomości opartych jest na badaniach cen ofertowych,
