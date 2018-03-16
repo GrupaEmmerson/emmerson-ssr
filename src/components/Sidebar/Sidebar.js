@@ -61,7 +61,6 @@ class Sidebar extends Component {
                 officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
                 exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
                 zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false,
-                offerNumber: false
             });
             this.props.setSearch({
                 priceFrom: this.props.searchData ? this.props.searchData['priceFrom'] : 0,
@@ -78,7 +77,6 @@ class Sidebar extends Component {
                 officeType: this.props.searchData ? this.props.searchData['officeType'] : false,
                 exclusive: this.props.searchData ? this.props.searchData['exclusive'] : false,
                 zeroPercent: this.props.searchData ? this.props.searchData['zeroPercent'] : false,
-                offerNumber: false
             });
         }
     }
@@ -166,14 +164,20 @@ class Sidebar extends Component {
             }
         }
         const searchData = this.props.searchData ? this.props.searchData : [];
-        searchData[name] = value;
-        this.setState({
-            [name]: value
-        });
-        this.props.setSearchData(
-            searchData
-        );
-
+        if(name === 'offerNumber'){
+            this.setState({
+                [name]: value
+            });
+        }
+        else{
+            searchData[name] = value;
+            this.setState({
+                [name]: value
+            });
+            this.props.setSearchData(
+                searchData
+            );
+        }
         setTimeout(()=>this.checkValid(), 500);
 
     }
