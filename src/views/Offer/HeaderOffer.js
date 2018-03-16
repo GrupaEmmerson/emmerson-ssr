@@ -65,16 +65,16 @@ class HeaderOffer extends React.Component {
                         <h3>{full_location}</h3>
                     </div>
                     <div className='col-12 col-sm-5 col-md-3' style={style.text}>
-                        <span style={style.textColor}>Cena:</span>
-                        <h3> <NumberFormat value={parseFloat(price)} displayType={'text'} thousandSeparator={' '} suffix={'zł'} decimalSeparator={','} decimalScale={2} fixedDecimalScale={true}/></h3>
+                        <span style={style.textColor}>Cena zł:</span>
+                        <h3>{price}</h3>
                     </div>
                     <div className='col-6 col-sm-4 col-md-2' style={style.text}>
-                        <span style={style.textColor}>Cena m<sup>2</sup>:</span>
-                        <h3><NumberFormat value={parseFloat(priceM2)} displayType={'text'} thousandSeparator={' '} suffix={'zł'} decimalSeparator={','} decimalScale={2} fixedDecimalScale={true}/></h3>
+                        <span style={style.textColor}>Cena zł m<sup>2</sup>:</span>
+                        <h3>{priceM2}</h3>
                     </div>
                     <div className='col-6 col-sm-3 col-md-2' style={style.text}>
-                        <span style={style.textColor}>Powierzchnia:</span>
-                        <h3><NumberFormat value={parseFloat(surface)} displayType={'text'} thousandSeparator={' '} decimalSeparator={','} decimalScale={2} fixedDecimalScale={true}/>m<sup>2</sup></h3>
+                        <span style={style.textColor}>Powierzchnia m<sup>2</sup>:</span>
+                        <h3>{surface}</h3>
                     </div>
                 </div>
             </div>

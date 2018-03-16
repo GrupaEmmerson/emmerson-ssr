@@ -82,11 +82,11 @@ class OffersView extends Component {
                                                 </div>
                                                 <div className='col-md-6 col-sm-6 col-6'>
                                                     Nr Oferty: <b>{e.number}</b><br/>
-                                                    Cena: <b><NumberFormat value={parseFloat(e.price)} displayType={'text'} thousandSeparator={' '} decimalSeparator={','} decimalScale={2} fixedDecimalScale={true}/> zł</b><br/>
+                                                    Cena: <b>{e.price} zł</b><br/>
                                                 </div>
                                                 <div className='col-md-6 col-sm-6 col-6'>
                                                     Rodzaj: <b>{e.item}</b><br/>
-                                                    Cena za m<sup>2</sup>: <b><NumberFormat value={parseFloat(e.price_per_m2)} displayType={'text'} thousandSeparator={' '} decimalSeparator={','} decimalScale={2} fixedDecimalScale={true}/> zł</b><br/>
+                                                    Cena za m<sup>2</sup>: <b>{e.price_per_m2} zł</b><br/>
                                                 </div>
                                             </div>
                                         </div>

@@ -43,9 +43,7 @@ class Contact extends Component {
                 this.setState({offer: response});
                 this.setState({message: 'Jestem zainteresowany ofertą nr '+this.state.offer.number+' opublikowaną na stronie www.emmerson.pl. Proszę o kontakt. '})
             });
-
         this.props.setResponseMessage(false);
-
     }
 
     componentWillUpdate(state){
@@ -104,12 +102,6 @@ class Contact extends Component {
                 })
             }
         }
-        const TextArea = ({input:{ checked, onChange, name, value}, className, placeholder, id, label, type, children}) => (
-
-            <textarea name={name} id={id} type='textarea' className="form-control" rows="9" cols="25" required="required"
-               placeholder="" value={value ? value :  this.state.message } onChange={onChange}/>
-        );
-
 
         return (
             <div className="container-fluid nopadding" >
@@ -176,8 +168,8 @@ class Contact extends Component {
                                     <div className="form-group">
                                         <label htmlFor="message">
                                             Wiadomość *</label>
-                                        <Field component={TextArea} name="message" id="message" className="form-control" rows="9" cols="25" required="required"
-                                                  placeholder="" value={this.state.message} onChange={this.handleInputChange}/>
+                                        <Field component='textarea' name="message" id="message" className="form-control" rows="9" cols="25" required="required"
+                                               value={ this.state.message } onChange={this.handleInputChange} />
                                     </div>
                                 </div>
 
@@ -215,7 +207,7 @@ function mapStateToProps(state){
 
 Contact = connect(
     mapStateToProps,
-    actions
+    actions,
 )(Contact);
 
 export default Contact = reduxForm({
@@ -227,5 +219,8 @@ export default Contact = reduxForm({
             'email',
             'message',
             'offerId'
-        ]
+        ],
+    initialValues: {
+        message: 'Jestem zainteresowany tą ofertą opublikowaną na stronie www.emmerson.pl. Proszę o kontakt.'
+    }
 })(Contact);
