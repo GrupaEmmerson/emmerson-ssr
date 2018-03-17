@@ -43,8 +43,8 @@ class OfferView extends Component {
 
     componentDidMount(){
         const apiUrl =  API_DIR+API_PORT+`/offer/`;
-
-        const url = [apiUrl + this.props.match.params.id].join("");
+        console.log(this.props.match.params );
+        const url = this.props.match.params.usr ? [apiUrl + this.props.match.params.id + '/usr/'+ this.props.match.params.usr].join("") : [apiUrl + this.props.match.params.id].join("");
 
         fetch(url)
             .then(res => res.json())

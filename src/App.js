@@ -37,6 +37,7 @@ class App extends Component {
             <Provider store={store}>
                 <Router history={history} >
                     <Switch>
+                        <Route path="/offer/:id/usr/:usr" name="Offer Page" component={NoSidebar}/>
                         <Route path="/offer/:id" name="Offer Page" component={NoSidebar}/>
                         <Route path="/search" name="Search Page" component={Full}/>
                         <Route path="/" name="Main Page" component={MainPageContainer}/>
