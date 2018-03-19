@@ -8759,12 +8759,9 @@ body {
 
 @media (max-width: 770px) {
   .smalltitle2 {
-    min-height: 366px !important;
     margin: 0; }
   .search-box {
-    margin-top: 45px !important; }
-  .offer-info {
-    margin-top: 300px !important; } }
+    margin-top: 45px !important; } }
 
 [placeholder]::-webkit-input-placeholder {
   color: #71777f;
@@ -8793,13 +8790,18 @@ body {
   font-family: 'Barlow Condensed', sans-serif; }
 
 .icons-top-right {
-  float: right; }
+  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px; }
 
 .offer-text {
+  position: absolute;
   color: #fff;
   text-shadow: 2px 3px 8px #32373e;
   margin-left: 0;
-  padding-bottom: 10px;
+  bottom: 2px;
+  padding-bottom: 15px;
   background: transparent;
   background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(53%, rgba(0, 0, 0, 0.39)), color-stop(100%, rgba(0, 0, 0, 0.73)));
@@ -8808,13 +8810,6 @@ body {
   background: -ms-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
   background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.39) 53%, rgba(0, 0, 0, 0.73) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 ); }
-
-.offer-info {
-  width: auto;
-  height: auto;
-  min-height: 100%;
-  min-width: 100%;
-  margin-top: 200px; }
 
 .flex-container {
   display: flex;
@@ -9010,6 +9005,21 @@ a:hover {
 
 .header-fixed .app-header {
   max-width: 100vw; }
+
+.offer-container {
+  width: 600px !important;
+  padding-top: 56.25%;
+  /* 1:1 Aspect Ratio */
+  position: relative;
+  /* If you want text inside of it */ }
+
+/* If you want text inside of the container */
+.offer-box-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
 
 @font-face {
   font-family: BebasNeue Regular;

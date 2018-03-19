@@ -19,7 +19,8 @@ class Contact extends Component {
             name: null,
             check_one: false,
             check_two: false,
-            offerId: null
+            offerId: null,
+            userId: null
         };
 
     }
@@ -80,6 +81,8 @@ class Contact extends Component {
         const messageField = this.props.messageField ? this.props.messageField.messageField : {};
         messageField[name] = value;
         messageField['offerId'] = this.state.offer.id;
+        messageField['userId'] = this.state.userId;
+        messageField['message'] = this.state.message;
 
         this.setState({
             [name]: value
@@ -98,11 +101,11 @@ class Contact extends Component {
         if(!this.state.offerId ){
             if(this.state.offer !== undefined){
                 this.setState({
-                    offerId: this.state.offer.id
+                    offerId: this.state.offer.id,
+                    userId: adviser.id
                 })
             }
         }
-
         return (
             <div className="container-fluid nopadding" >
 

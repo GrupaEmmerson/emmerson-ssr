@@ -54,7 +54,8 @@ class OffersView extends Component {
                                     <div className="smalltitle2" style={ {
                                         backgroundImage: "url(" +  e.big_photo_url  + ")",
                                         float: 'left',
-                                        cursor: 'pointer'
+                                        cursor: 'pointer',
+                                        paddingTop: 62.5+'%',
                                     }} onMouseOver={() => {
                                         this.props.setViewport({index: e.id, position: { lat: parseFloat(e.latitude), lng: parseFloat(e.longitude) }});
                                     }} onMouseOut={() => {
@@ -72,8 +73,10 @@ class OffersView extends Component {
                                                 })}
                                             </div>
                                         </div>
-                                        <div className='offer-info'>
-                                            <div className='offer-text row nopadding col-md-12 col-lg-12 col-sm-12' >
+                                        <div>
+                                            <div className='offer-text row nopadding col-md-12 col-lg-12 col-sm-12' style={{
+                                                marginBottom: 5+'px'
+                                            }}>
                                                 <div className='col-md-6 col-sm-6 col-6'>
                                                     <h4>Miasto <b>{e.city}</b></h4>
                                                 </div>

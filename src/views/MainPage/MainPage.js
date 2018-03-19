@@ -83,7 +83,7 @@ const promoHouse = [
 const images = [
     {
         link: 'https://img-static.emmerson.pl/img/slider/MB.jpg',
-        name: 'Metro Bielany',
+        name: 'MetroBielany',
         sub_name: 'Warszawa-Bielany',
         url: 'http://www.metrobielany.pl/'
     },
@@ -369,8 +369,14 @@ class MainPage extends Component {
                                 {images.map( (e, index) => {
                                     return(
                                       <div className='col-12 col-sm-12 col-md-6 col-lg-4 cursor-pointer' style={{padding: 2+'px', margin: 0}} key={index} onClick={() => window.location = e.url }>
-                                            <div className='offer-text' style={{margin: 'auto', width: 100+'%', height: 100+'%', maxHeight: 200+'px', minHeight: 200+'px', backgroundImage: 'url('+e.link+')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                                                <span style={{padding: '2px 4px 2px 4px', backgroundColor: 'RGBA(0,0,0,0.5)'}}>{e.name}</span>
+                                            <div className='' style={{
+                                                fontFamily: 'BebasNeue Regular, sans-serif, FontAwesome',
+                                                color: '#fff', margin: 'auto', width: 100+'%',
+                                                height: 100+'%', maxHeight: 200+'px', minHeight: 200+'px',
+                                                backgroundImage: 'url('+e.link+')', backgroundSize: 'cover',
+                                                backgroundPosition: 'center', backgroundRepeat: 'no-repeat'
+                                            }}>
+                                                <span style={{ backgroundColor: 'RGBA(0,0,0,0.5)', paddingTop: 3+'px', paddingLeft: 2+'px', paddingRight: 2+'px'}}>{e.name}</span>
                                             </div>
                                       </div>
                                     );

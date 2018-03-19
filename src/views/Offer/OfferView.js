@@ -43,7 +43,6 @@ class OfferView extends Component {
 
     componentDidMount(){
         const apiUrl =  API_DIR+API_PORT+`/offer/`;
-        console.log(this.props.match.params );
         const url = this.props.match.params.usr ? [apiUrl + this.props.match.params.id + '/usr/'+ this.props.match.params.usr].join("") : [apiUrl + this.props.match.params.id].join("");
 
         fetch(url)
@@ -79,7 +78,6 @@ class OfferView extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        console.log(event);
 
         this.setState({
             [name]: value
@@ -98,7 +96,6 @@ class OfferView extends Component {
     }
     checkValidForm(){
         if(this.state.check_one && this.state.check_two){
-            console.log(this.props.messageField.messageField);
             this.props.sentMessage(this.props.messageField.messageField);
             this.props.setCheckConfirmed(true);
         }
