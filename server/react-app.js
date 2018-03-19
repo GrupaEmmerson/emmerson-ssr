@@ -8,7 +8,7 @@ const fetch = require("node-fetch");
 const decode = require('decode-html');
 const url = require('url');
 
-const apiUrl = `http://emmerson.pl:8080/offer/`;
+const apiUrl = `https://emmerson.pl:8080/offer/`;
 
 router.get("/pl/offer/:id", (req, res) => {
     console.log(req, res);
