@@ -3,7 +3,7 @@ const express = require("express");
 const serveStatic = require("serve-static");
 const reactApp = require("./react-app");
 
-const PORT = 80;
+const PORT = 8080;
 const app = express();
 
 app.use(reactApp);

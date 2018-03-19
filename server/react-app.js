@@ -99,7 +99,7 @@ setTimeout(()=>{
       res.end();
     });
   });
-}, 100);
+}, 500);
 });
 
 router.get("/offer/:id/usr/:usr", (req, res) => {
@@ -137,7 +137,7 @@ setTimeout(()=>{
       res.end();
     });
   });
-}, 100);
+}, 500);
 });
 
 router.get("/search", (req, res) => {
@@ -166,7 +166,7 @@ router.get("/search", (req, res) => {
                 res.end();
             });
         });
-    }, 100);
+    }, 500);
 });
 
 router.get("/", (req, res) => {
@@ -195,7 +195,7 @@ router.get("/", (req, res) => {
                 res.end();
             });
         });
-    }, 100);
+    }, 500);
 });
 
 module.exports = router;

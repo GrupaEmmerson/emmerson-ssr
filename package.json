@@ -1,5 +1,5 @@
 {
-  "name": "server-side-rendering-with-create-react-app",
+  "name": "emmerson-ssr",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "font-awesome": "^4.7.0",
     "history": "4.6.3",
     "htmlspecialchars": "^1.0.5",
+    "https": "^1.0.0",
     "node-fetch": "^2.0.0",
     "node-sass-chokidar": "0.0.3",
     "react": "^16.1.1",
